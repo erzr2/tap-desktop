@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Globalization;
 using TheAirline.Model.AirlineModel;
+using TheAirline.GraphicsModel.PageModel.PageGameModel;
 using TheAirline.Model.GeneralModel.ScenarioModel;
 using System.Runtime.Serialization;
 using System.ComponentModel;

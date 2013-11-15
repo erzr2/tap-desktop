@@ -86,8 +86,8 @@ namespace TheAirline.GUIModel.PagesModel.AirlinePageModel
 
             AirlineInsurance insurance = AirlineInsuranceHelpers.CreatePolicy(this.Airline.Airline, type, scope, terms, allAirliners, lenght, amount);
 
-            //if (PopUpConfirmInsurance.ShowPopUp(insurance) != null)
-              //  this.Airline.addAirlineInsurance(insurance);
+            if (PopUpConfirmInsurance.ShowPopUp(insurance) != null)
+                this.Airline.addAirlineInsurance(insurance);
         }
       
     }

@@ -76,7 +76,10 @@ namespace TheAirline.GUIModel.PagesModel.GamePageModel
             this.StartData.TimeZone = (GameTimeZone)cbTimeZone.SelectedItem;
             this.StartData.LocalCurrency = cbLocalCurrency.IsChecked.Value && this.StartData.HomeCountry.HasLocalCurrency;
          
-          
+            Size s = PageNavigator.MainWindow.RenderSize;
+
+            GraphicsHelpers.SetContentHeight(s.Height/2);
+            GraphicsHelpers.SetContentWidth(s.Width / 2);
 
             if (!this.StartData.RandomOpponents)
             {

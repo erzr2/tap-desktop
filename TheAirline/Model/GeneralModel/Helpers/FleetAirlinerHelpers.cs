@@ -26,7 +26,8 @@ namespace TheAirline.Model.GeneralModel.Helpers
             Dictionary<DelayType, int> delays = new Dictionary<DelayType, int>();
 
             delays.Add(DelayType.Airliner_problems, GetAirlinerAgeDelay(airliner));
-            delays.Add(DelayType.Bad_weather, GetAirlinerWeatherDelay(airliner));
+            //delays.Add(DelayType.Bad_weather, GetAirlinerWeatherDelay(airliner));
+            delays.Add(DelayType.Bad_weather, 0);
 
             KeyValuePair<DelayType, int> delay = new KeyValuePair<DelayType, int>(DelayType.None, 0);
             foreach (var d in delays)
@@ -43,12 +44,12 @@ namespace TheAirline.Model.GeneralModel.Helpers
         {
             int age = airliner.Airliner.Age;
 
-            int tAge = 100 - (age * 3);
+            int tAge = 100 - (age * 2);
 
             Boolean delayed = rnd.Next(100) > tAge;
 
             if (delayed)
-                return rnd.Next(0, age) * 5;
+                return rnd.Next(0, age) * 2;
             else
                 return 0;
         }

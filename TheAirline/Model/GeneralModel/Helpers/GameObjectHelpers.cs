@@ -21,6 +21,7 @@ using TheAirline.Model.PilotModel;
 using TheAirline.Model.StatisticsModel;
 using TheAirline.Model.AirlineModel.SubsidiaryModel;
 using System.Diagnostics;
+using TheAirline.GraphicsModel.PageModel.GeneralModel;
 using TheAirline.GUIModel.ObjectsModel;
 using TheAirline.Model.GeneralModel.CountryModel;
 using TheAirline.GUIModel.PagesModel.GamePageModel;
