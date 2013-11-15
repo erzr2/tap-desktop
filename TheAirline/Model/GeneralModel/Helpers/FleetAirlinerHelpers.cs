@@ -137,6 +137,14 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
             return delayTime;
         }
+        /* clears the statistics for all fleet airliners
+        */
+        public static void ClearAirlinerStatistics()
+        {
+            foreach (Airline airline in Airlines.GetAllAirlines())
+                foreach (FleetAirliner airliner in airline.Fleet)
+                    airliner.Statistics.clear();
+        }
         //creates the stop over route based on the main route
         public static StopoverRoute CreateStopoverRoute(Airport dest1, Airport stopover, Airport dest2, Route mainroute, Boolean oneLegged,Route.RouteType type)
         {
