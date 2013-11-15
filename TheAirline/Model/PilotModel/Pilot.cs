@@ -57,8 +57,11 @@ namespace TheAirline.Model.PilotModel
         //adds a pilot to the list
         public static void AddPilot(Pilot pilot)
         {
-            if (pilot != null)
-                pilots.Add(pilot);
+            lock (pilots)
+            {
+                if (pilot != null)
+                    pilots.Add(pilot);
+            }
         }
         //clears the list of pilots
         public static void Clear()

@@ -39,10 +39,11 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lbFacilities.ItemsSource);
             view.SortDescriptions.Clear();
 
-            SortDescription sortAirlineDescription = new SortDescription("Airline.Profile.Name", ListSortDirection.Ascending);
+            SortDescription sortAirlineDescription = new SortDescription("Facility.Airline.Profile.Name", ListSortDirection.Ascending);
             view.SortDescriptions.Add(sortAirlineDescription);
 
-        
+            SortDescription sortFacilityDescription = new SortDescription("Facility.Facility.Shortname", ListSortDirection.Ascending);
+            view.SortDescriptions.Add(sortFacilityDescription);
         }
 
         private void btnDeleteFacility_Click(object sender, RoutedEventArgs e)
@@ -87,7 +88,7 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
            if (facilities.Count >= index + 1)
            {
                AirportFacility facility = facilities[index + 1];
-
+               
                if (facility.Price > GameObject.GetInstance().HumanAirline.Money)
                    WPFMessageBox.Show(Translator.GetInstance().GetString("MessageBox", "2201"), Translator.GetInstance().GetString("MessageBox", "2201", "message"), WPFMessageBoxButtons.Ok);
                else

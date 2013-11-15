@@ -427,7 +427,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
                 lock (airline.Fleet)
                 {
                     var fleet = new List<FleetAirliner>(airline.Fleet);
-                    foreach (FleetAirliner airliner in airline.Fleet.FindAll(a => a.Airliner.BuiltDate == GameObject.GetInstance().GameTime && a.Purchased == FleetAirliner.PurchasedType.BoughtDownPayment))
+                    foreach (FleetAirliner airliner in fleet.FindAll(a => a!=null && a.Airliner.BuiltDate == GameObject.GetInstance().GameTime && a.Purchased == FleetAirliner.PurchasedType.BoughtDownPayment))
                     {
                         if (airline.Money >= airliner.Airliner.Type.Price)
                         {

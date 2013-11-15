@@ -343,8 +343,18 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <WrapPanel>
-                                            <Button Background="Transparent" Width="20" Tag="{Binding}" Click="btnExtendContract_Click"  Visibility="{Binding Airline.IsHuman,Converter={StaticResource BooleanToVisibility}}">
-                                                <Image Source="/data/images/edit.png" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+                                            <Button Background="Transparent" Width="20" Tag="{Binding}" Click="btnExtendContract_Click">
+                                                    <Button.Style>
+                                                        <Style TargetType="Button">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Airline.IsHuman}" Value="False">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                              
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Button.Style>
+                                                        <Image Source="/data/images/edit.png" RenderOptions.BitmapScalingMode="HighQuality"></Image>
                                             </Button>
                                             <Button Background="Transparent" Width="20" Tag="{Binding}" Margin="5 0 0 0" Click="btnRemoveContract_Click" Visibility="{Binding Airline.IsHuman,Converter={StaticResource BooleanToVisibility}}">
                                                 <Image Source="/data/images/delete.png" RenderOptions.BitmapScalingMode="HighQuality"></Image>
@@ -393,7 +403,17 @@
 
                             </WrapPanel>
                             <WrapPanel Margin="0 5 0 0">
-                                <Button Style="{DynamicResource StandardButtonStyle}" Content="{Binding Source={x:Null}, Converter={StaticResource TranslatorConverter},ConverterParameter='PageAirportInfo 201'}" Click="btnSignContract_Click"></Button>
+                                <Button Content="{Binding Source={x:Null}, Converter={StaticResource TranslatorConverter},ConverterParameter='PageAirportInfo 201'}" Click="btnSignContract_Click">
+                                    <Button.Style>
+                                        <Style TargetType="Button" BasedOn="{StaticResource StandardButtonStyle}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding FreeGates}" Value="0">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
                             </WrapPanel>
                         </StackPanel>
                     </Expander>

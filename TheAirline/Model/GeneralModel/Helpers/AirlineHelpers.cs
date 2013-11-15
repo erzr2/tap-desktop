@@ -17,6 +17,14 @@ namespace TheAirline.Model.GeneralModel.Helpers
     //the class for some general airline helpers
     public class AirlineHelpers
     {
+        //clears the statistics for all routes for all airlines
+        public static void ClearRoutesStatistics()
+        {
+            var routes = Airlines.GetAllAirlines().SelectMany(a => a.Routes);
+
+            foreach (Route route in routes)
+                route.Statistics.clear();
+        }
         //clears the statistics for all airlines
         public static void ClearAirlinesStatistics()
         {

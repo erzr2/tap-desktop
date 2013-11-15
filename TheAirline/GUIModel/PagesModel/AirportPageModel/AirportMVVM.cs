@@ -165,6 +165,9 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
 
             this.ShowLocalTime = !GameObject.GetInstance().DayRoundEnabled;
         }
+
+       
+       
         //returns if hub can be build
         private Boolean canBuildHub()
         {
@@ -259,15 +262,25 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
             AirlineAirportFacility nextFacility = new AirlineAirportFacility(GameObject.GetInstance().HumanAirline,this.Airport, facility, GameObject.GetInstance().GameTime.AddDays(facility.BuildingDays));
             this.Airport.setAirportFacility(nextFacility);
 
-            AirlineAirportFacilityMVVM currentFacility = this.AirlineFacilities.Where(f=>f.Facility.Facility.Type == facility.Type).FirstOrDefault();
+            /*
+            AirlineAirportFacilityMVVM currentFacility = this.AirlineFacilities.Where(f => f.Facility.Facility.Type == facility.Type).FirstOrDefault();
 
             if (currentFacility != null)
-                this.AirlineFacilities.Remove(currentFacility);
+                removeAirlineFacility(currentFacility);
             
             Alliance alliance = nextFacility.Airline.Alliances.Count == 0 ? null : nextFacility.Airline.Alliances[0];
-      
-
+            
             this.AirlineFacilities.Add(new AirlineAirportFacilityMVVM(nextFacility,alliance));
+             * */
+            this.AirlineFacilities.Clear();
+
+            foreach (var tFacility in this.Airport.getAirportFacilities().FindAll(f => f.Airline != null))
+                if (tFacility.Facility.TypeLevel != 0)
+                {
+                    Alliance alliance = tFacility.Airline.Alliances.Count == 0 ? null : tFacility.Airline.Alliances[0];
+
+                    this.AirlineFacilities.Add(new AirlineAirportFacilityMVVM(tFacility, alliance));
+                }
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
@@ -482,10 +495,12 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
     {
         public AirlineAirportFacility Facility { get; set; }
         public Alliance Alliance { get; set; }
+        public Boolean IsDelivered { get; set; }
         public AirlineAirportFacilityMVVM(AirlineAirportFacility facility, Alliance alliance)
         {
             this.Facility = facility;
             this.Alliance = alliance;
+            this.IsDelivered = facility.FinishedDate < GameObject.GetInstance().GameTime;
         }
     }
     //the converter for the price of a terminal
