@@ -18,11 +18,12 @@ using TheAirline.Model.AirportModel;
 using TheAirline.Model.AirlinerModel;
 using TheAirline.Model.AirlinerModel.RouteModel;
 using TheAirline.Model.GeneralModel;
-using TheAirline.GraphicsModel.PageModel.GeneralModel;
 using TheAirline.GraphicsModel.Converters;
 using TheAirline.Model.AirlineModel;
 using System.ComponentModel;
 using TheAirline.GUIModel.PagesModel.AirportPageModel;
+using TheAirline.GUIModel.HelpersModel;
+using TheAirline.GraphicsModel.PageModel.GeneralModel;
 
 namespace TheAirline.GraphicsModel.UserControlModel.PopUpWindowsModel
 {
@@ -184,7 +185,7 @@ namespace TheAirline.GraphicsModel.UserControlModel.PopUpWindowsModel
                 panelSize.Children.Add(eSize);
 
                 TextBlock txtSize = new TextBlock();
-                txtSize.Text = new TextUnderscoreConverter().Convert(size).ToString();
+                txtSize.Text = new TheAirline.GUIModel.HelpersModel.TextUnderscoreConverter().Convert(size).ToString();
                 txtSize.Margin = new Thickness(5, 0, 0, 0);
 
                 panelSize.Children.Add(txtSize);
@@ -318,7 +319,7 @@ namespace TheAirline.GraphicsModel.UserControlModel.PopUpWindowsModel
         //shows an airport
         private void showAirport(Airport airport, Panel panelMap, int zoom, Point margin)
         {
-            Point pos = GraphicsHelpers.WorldToTilePos(airport.Profile.Coordinates, zoom);
+            Point pos = UIHelpers.WorldToTilePos(airport.Profile.Coordinates, zoom);
 
             Point p = new Point(pos.X * ImageSize - margin.X * ImageSize, pos.Y * ImageSize - margin.Y * ImageSize);
 
@@ -335,14 +336,14 @@ namespace TheAirline.GraphicsModel.UserControlModel.PopUpWindowsModel
             }
             else
             {
-                Point pos = GraphicsHelpers.WorldToTilePos(route.Destination1.Profile.Coordinates, zoom);
+                Point pos = UIHelpers.WorldToTilePos(route.Destination1.Profile.Coordinates, zoom);
 
                 Point p = new Point(pos.X * ImageSize - margin.X * ImageSize, pos.Y * ImageSize - margin.Y * ImageSize);
 
                 if (p.X < panelMap.Width)
                     panelMap.Children.Add(createPin(p, route.Destination1));
 
-                pos = GraphicsHelpers.WorldToTilePos(route.Destination2.Profile.Coordinates, zoom);
+                pos = UIHelpers.WorldToTilePos(route.Destination2.Profile.Coordinates, zoom);
 
                 p = new Point(pos.X * ImageSize - margin.X * ImageSize, pos.Y * ImageSize - margin.Y * ImageSize);
 
@@ -382,8 +383,8 @@ namespace TheAirline.GraphicsModel.UserControlModel.PopUpWindowsModel
           {
               GeoCoordinate c3 = MathHelpers.GetRoutePoint(c1, a2.Profile.Coordinates, d);
 
-              Point pos1 = GraphicsHelpers.WorldToTilePos(c1, zoom);
-              Point pos2 = GraphicsHelpers.WorldToTilePos(c3, zoom);
+              Point pos1 = UIHelpers.WorldToTilePos(c1, zoom);
+              Point pos2 = UIHelpers.WorldToTilePos(c3, zoom);
 
               /*
               Line line = new Line();
@@ -437,7 +438,7 @@ namespace TheAirline.GraphicsModel.UserControlModel.PopUpWindowsModel
 
             if (focused != null)
             {
-                Point pos = GraphicsHelpers.WorldToTilePos(focused, zoom);
+                Point pos = UIHelpers.WorldToTilePos(focused, zoom);
 
                 px = Math.Max(1, pos.X);
                 py = Math.Max(1, pos.Y);
@@ -503,7 +504,7 @@ namespace TheAirline.GraphicsModel.UserControlModel.PopUpWindowsModel
 
             if (focused != null)
             {
-                Point pos = GraphicsHelpers.WorldToTilePos(focused, zoom);
+                Point pos = UIHelpers.WorldToTilePos(focused, zoom);
 
                 px = Math.Max(1, pos.X);
                 py = Math.Max(1, pos.Y);
@@ -575,7 +576,7 @@ namespace TheAirline.GraphicsModel.UserControlModel.PopUpWindowsModel
             Canvas panelMap = (Canvas)XamlReader.Load(xmlReader);
 
 
-            Point pos = GraphicsHelpers.WorldToTilePos(coordinates, this.Zoom);
+            Point pos = UIHelpers.WorldToTilePos(coordinates, this.Zoom);
 
             Point p = new Point(pos.X * ImageSize, pos.Y * ImageSize);
 

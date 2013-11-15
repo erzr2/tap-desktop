@@ -40,11 +40,7 @@ namespace TheAirline.GUIModel.PagesModel.GamePageModel
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            Size s = PageNavigator.MainWindow.RenderSize;
-
-            GraphicsHelpers.SetContentHeight(s.Height / 2);
-            GraphicsHelpers.SetContentWidth(s.Width / 2);
-
+           
             ScenarioHelpers.SetupScenario(this.Scenario);
         
         }

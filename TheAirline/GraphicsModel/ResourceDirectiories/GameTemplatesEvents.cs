@@ -5,11 +5,8 @@ using System.Text;
 
 using System.Windows;
 using TheAirline.Model.AirlineModel;
-using TheAirline.GraphicsModel.PageModel.GeneralModel;
 using System.Windows.Documents;
-using TheAirline.GraphicsModel.PageModel.PageAirlineModel;
 using TheAirline.Model.AirportModel;
-using TheAirline.GraphicsModel.PageModel.PageAirportModel;
 using System.Windows.Data;
 using TheAirline.Model.AirlinerModel.RouteModel;
 using TheAirline.Model.GeneralModel;
@@ -22,13 +19,11 @@ namespace TheAirline.GraphicsModel.ResourceDirectiories
         {
             Airline airline = (Airline)((Hyperlink)sender).Tag;
 
-            PageNavigator.NavigateTo(new PageAirline(airline));
-        }
+         }
         private void Airport_Click(object sender, RoutedEventArgs e)
         {
             Airport airport = (Airport)((Hyperlink)sender).Tag;
 
-            PageNavigator.NavigateTo(new PageAirport(airport));
         }
     }
     //the converter for if wifi is enabled
