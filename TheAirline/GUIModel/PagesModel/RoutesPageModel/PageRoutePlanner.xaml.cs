@@ -29,7 +29,7 @@ namespace TheAirline.GUIModel.PagesModel.RoutesPageModel
     /// <summary>
     /// Interaction logic for PageRoutePlanner.xaml
     /// </summary>
-    public partial class PageRoutePlanner : Page
+    public partial class PageRoutePlanner : Page, INotifyPropertyChanged
     {
         public FleetAirliner Airliner { get; set; }
         public List<RoutePlannerItemMVVM> AllRoutes { get; set; }
@@ -41,6 +41,12 @@ namespace TheAirline.GUIModel.PagesModel.RoutesPageModel
         public List<int> StopoverMinutes { get; set; }
         public ObservableCollection<int> Intervals { get; set; }
         private Point startPoint;
+        private Boolean _islongroute;
+        public Boolean IsLongRoute
+        {
+            get { return _islongroute; }
+            set { this._islongroute = value; NotifyPropertyChanged("IsLongRoute"); }
+        }
         public List<IntervalType> IntervalTypes
         {
             get { return Enum.GetValues(typeof(IntervalType)).Cast<IntervalType>().ToList(); }
@@ -52,11 +58,14 @@ namespace TheAirline.GUIModel.PagesModel.RoutesPageModel
             private set { ;}
 
         }
+       
         public PageRoutePlanner(FleetAirliner airliner)
         {
             this.Airliner = airliner;
             this.Entries = new ObservableCollection<RouteTimeTableEntry>();
             this.Entries.CollectionChanged += Entries_CollectionChanged;
+
+            this.IsLongRoute = false;
 
             this.AllRoutes = new List<RoutePlannerItemMVVM>();
             this.Intervals = new ObservableCollection<int>() { 1, 2, 3, 4, 5, 6 };
@@ -563,6 +572,8 @@ namespace TheAirline.GUIModel.PagesModel.RoutesPageModel
 
             switch (interval)
             {
+                    
+                    //SFO -> ATH: 767-200ER
                 case "Manual":
                     addEntries(getSelectedDays());
                     break;
@@ -626,7 +637,7 @@ namespace TheAirline.GUIModel.PagesModel.RoutesPageModel
                 rt.addEntry(entry);
             }
 
-            if (!TimeTableHelpers.IsTimeTableValid(rt, this.Airliner, this.Entries.ToList()))
+            if (!TimeTableHelpers.IsRoutePlannerTimeTableValid(rt, this.Airliner, this.Entries.ToList()))
                 WPFMessageBox.Show(Translator.GetInstance().GetString("MessageBox", "2706"), Translator.GetInstance().GetString("MessageBox", "2706", "message"), WPFMessageBoxButtons.Ok);
             else
             {
@@ -659,12 +670,31 @@ namespace TheAirline.GUIModel.PagesModel.RoutesPageModel
                 DragDrop.DoDragDrop(rect, dragData, DragDropEffects.Move);
             } 
         }
+        private void cbHomebound_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Route route = (Route)cbHomebound.SelectedItem;
 
+            if (route != null)
+                this.IsLongRoute = MathHelpers.GetFlightTime(route.Destination1, route.Destination2, this.Airliner.Airliner.Type).Add(FleetAirlinerHelpers.GetMinTimeBetweenFlights(this.Airliner.Airliner.Type)).TotalHours > 12;
+            else
+                this.IsLongRoute = false;
+
+        }
         private void Rectangle_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             startPoint = e.GetPosition(null);
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (null != handler)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
+      
       
     }
 }

@@ -24,8 +24,8 @@
             <g:QuickInfoValue Text="{Binding Source={x:Null}, Converter={StaticResource TranslatorConverter},ConverterParameter='PageNewGame 1028'}">
                 <g:QuickInfoValue.Value>
                     <WrapPanel>
-                        <RadioButton GroupName="MajorAirports" Name="cbMajorAirports" Content="{Binding Source={x:Null}, Converter={StaticResource TranslatorConverter},ConverterParameter='General 106'}" Style="{StaticResource RadioButtonLeftSideText}" VerticalAlignment="Bottom"></RadioButton>
-                        <RadioButton GroupName="MajorAirports" Content="{Binding Source={x:Null}, Converter={StaticResource TranslatorConverter},ConverterParameter='General 107'}" Style="{StaticResource RadioButtonLeftSideText}" VerticalAlignment="Bottom" Margin="5 0 0 0" IsChecked="True"></RadioButton>
+                        <RadioButton GroupName="MajorAirports" Name="cbMajorAirports" Content="{Binding Source={x:Null}, Converter={StaticResource TranslatorConverter},ConverterParameter='General 106'}" Style="{StaticResource RadioButtonLeftSideText}" VerticalAlignment="Bottom" IsChecked="True"></RadioButton>
+                        <RadioButton GroupName="MajorAirports" Content="{Binding Source={x:Null}, Converter={StaticResource TranslatorConverter},ConverterParameter='General 107'}" Style="{StaticResource RadioButtonLeftSideText}" VerticalAlignment="Bottom" Margin="5 0 0 0"></RadioButton>
                     </WrapPanel>
                 </g:QuickInfoValue.Value>
             </g:QuickInfoValue>
