@@ -59,14 +59,14 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
         private void btnSignContract_Click(object sender, RoutedEventArgs e)
         {
             int gates = Convert.ToInt16(slContractGates.Value);
-            int lenght = Convert.ToInt16(slContractLenght.Value);
+            int length = Convert.ToInt16(slContractLenght.Value);
 
             Boolean hasCheckin = this.Airport.Airport.getAirportFacility(GameObject.GetInstance().HumanAirline, AirportFacility.FacilityType.CheckIn).TypeLevel > 0;
-            double yearlyPayment = AirportHelpers.GetYearlyContractPayment(this.Airport.Airport, gates, lenght);
+            double yearlyPayment = AirportHelpers.GetYearlyContractPayment(this.Airport.Airport, gates, length);
 
-            Boolean payFull = lenght <= 2;
+            Boolean payFull = length <= 2;
 
-            AirportContract contract = new AirportContract(GameObject.GetInstance().HumanAirline, this.Airport.Airport, GameObject.GetInstance().GameTime, gates, lenght, yearlyPayment, payFull);
+            AirportContract contract = new AirportContract(GameObject.GetInstance().HumanAirline, this.Airport.Airport, GameObject.GetInstance().GameTime, gates, length, yearlyPayment, payFull);
 
             if (!hasCheckin)
             {
@@ -189,14 +189,12 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
         private void btnExtendContract_Click(object sender, RoutedEventArgs e)
         {
             ContractMVVM tContract = (ContractMVVM)((Button)sender).Tag;
-
-            int length = 2;
            
               WPFMessageBoxResult result = WPFMessageBox.Show(Translator.GetInstance().GetString("MessageBox", "2228"), string.Format(Translator.GetInstance().GetString("MessageBox", "2228", "message"),length), WPFMessageBoxButtons.YesNo);
 
               if (result == WPFMessageBoxResult.Yes)
               {
-                  tContract.extendContract(length);
+                  tContract.extendContract(2);
               }
         }
 

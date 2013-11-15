@@ -128,8 +128,6 @@ namespace TheAirline.GUIModel.PagesModel.FleetAirlinerPageModel
             this.IsBuyable = false;
 
             AirlineHelpers.AddAirlineInvoice(GameObject.GetInstance().HumanAirline, GameObject.GetInstance().GameTime, Invoice.InvoiceType.Purchases, -this.Airliner.Airliner.getPrice());
-
-
         }
         //adds a pilot to the airliner
         public void addPilot(Pilot pilot)
@@ -292,9 +290,7 @@ namespace TheAirline.GUIModel.PagesModel.FleetAirlinerPageModel
         //returns the value for the last year
         private double getLastYear()
         {
-            int year = GameObject.GetInstance().GameTime.Year - 1;
-
-            return this.Airliner.Statistics.getStatisticsValue(year, this.Type);
+            return this.Airliner.Statistics.getStatisticsValue(GameObject.GetInstance().GameTime.Year - 1, this.Type);
         }
         //returns the value for the current year
         private double getCurrentYear()
@@ -307,13 +303,12 @@ namespace TheAirline.GUIModel.PagesModel.FleetAirlinerPageModel
         //returns the change in %
         private double getChange()
         {
-            double currentYear = getCurrentYear();
             double lastYear = getLastYear();
 
             if (lastYear == 0)
                 return 1;
 
-            double changePercent = System.Convert.ToDouble(currentYear - lastYear) / lastYear;
+            double changePercent = System.Convert.ToDouble(getCurrentYear() - lastYear) / lastYear;
 
             if (double.IsInfinity(changePercent))
                 return 1;
