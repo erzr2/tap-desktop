@@ -78,34 +78,36 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
            AirportFacility.FacilityType type = (AirportFacility.FacilityType)cbNextFacility.SelectedItem;
 
            AirlineAirportFacility currentFacility = this.Airport.Airport.getAirlineAirportFacility(GameObject.GetInstance().HumanAirline, type);
-
+            
            List<AirportFacility> facilities = AirportFacilities.GetFacilities(type);
            facilities = facilities.OrderBy(f => f.TypeLevel).ToList();
 
            int index = facilities.FindIndex(f => currentFacility.Facility == f);
-            
-            AirportFacility facility = facilities[index + 1];
 
-           if (facility.Price > GameObject.GetInstance().HumanAirline.Money)
-               WPFMessageBox.Show(Translator.GetInstance().GetString("MessageBox", "2201"), Translator.GetInstance().GetString("MessageBox", "2201", "message"), WPFMessageBoxButtons.Ok);
-           else
+           if (facilities.Count >= index + 1)
            {
-               WPFMessageBoxResult result = WPFMessageBox.Show(Translator.GetInstance().GetString("MessageBox", "2202"), string.Format(Translator.GetInstance().GetString("MessageBox", "2202", "message"), facility.Name, facility.Price), WPFMessageBoxButtons.YesNo);
+               AirportFacility facility = facilities[index + 1];
 
-               if (result == WPFMessageBoxResult.Yes)
+               if (facility.Price > GameObject.GetInstance().HumanAirline.Money)
+                   WPFMessageBox.Show(Translator.GetInstance().GetString("MessageBox", "2201"), Translator.GetInstance().GetString("MessageBox", "2201", "message"), WPFMessageBoxButtons.Ok);
+               else
                {
-                   double price = facility.Price;
+                   WPFMessageBoxResult result = WPFMessageBox.Show(Translator.GetInstance().GetString("MessageBox", "2202"), string.Format(Translator.GetInstance().GetString("MessageBox", "2202", "message"), facility.Name, facility.Price), WPFMessageBoxButtons.YesNo);
 
-                   if (this.Airport.Airport.Profile.Country != GameObject.GetInstance().HumanAirline.Profile.Country)
-                       price = price * 1.25;
+                   if (result == WPFMessageBoxResult.Yes)
+                   {
+                       double price = facility.Price;
 
-                   AirlineHelpers.AddAirlineInvoice(GameObject.GetInstance().HumanAirline, GameObject.GetInstance().GameTime, Invoice.InvoiceType.Purchases, -price);
+                       if (this.Airport.Airport.Profile.Country != GameObject.GetInstance().HumanAirline.Profile.Country)
+                           price = price * 1.25;
 
-                   this.Airport.addAirlineFacility(facility);
- 
+                       AirlineHelpers.AddAirlineInvoice(GameObject.GetInstance().HumanAirline, GameObject.GetInstance().GameTime, Invoice.InvoiceType.Purchases, -price);
+
+                       this.Airport.addAirlineFacility(facility);
+
+                   }
                }
            }
-
         }
 
         private void btnQuickUpgradeFacility_Click(object sender, RoutedEventArgs e)

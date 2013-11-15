@@ -1080,7 +1080,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             {
                 if (isDaily || minFlightTime.Hours >= 12 || minFlightTime.Days >= 1)
                 {
-a
+
                     DayOfWeek day = 0;
 
                     int outTime = 15 * rnd.Next(-12, 12);

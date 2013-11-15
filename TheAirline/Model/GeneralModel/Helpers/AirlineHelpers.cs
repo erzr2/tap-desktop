@@ -17,6 +17,12 @@ namespace TheAirline.Model.GeneralModel.Helpers
     //the class for some general airline helpers
     public class AirlineHelpers
     {
+        //clears the statistics for all airlines
+        public static void ClearAirlinesStatistics()
+        {
+            foreach (Airline airline in Airlines.GetAllAirlines())
+                airline.Statistics.clear();
+        }
         //creates an airliner for an airline
         public static FleetAirliner CreateAirliner(Airline airline, AirlinerType type)
         {
