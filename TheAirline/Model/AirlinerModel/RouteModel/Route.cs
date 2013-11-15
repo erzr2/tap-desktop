@@ -108,7 +108,7 @@ namespace TheAirline.Model.AirlinerModel.RouteModel
             return this.Invoices;
         }
 
-        public void Clearroutestats()
+        public void clearRouteStats()
         {
             this.Statistics.Stats.Clear();
         }
