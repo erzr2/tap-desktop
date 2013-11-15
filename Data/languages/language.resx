@@ -4464,4 +4464,22 @@ Good luck.</value>
   <data name="PageFleetAirlinerInformation_204_name" xml:space="preserve">
     <value>Add Pilot</value>
   </data>
+  <data name="PageShowOptions_1008_name" xml:space="preserve">
+    <value>Autosaving</value>
+  </data>
+  <data name="PageShowOptions_1009_name" xml:space="preserve">
+    <value>Daily</value>
+  </data>
+  <data name="PageShowOptions_1010_name" xml:space="preserve">
+    <value>Montly</value>
+  </data>
+  <data name="PageShowOptions_1011_name" xml:space="preserve">
+    <value>Yearly</value>
+  </data>
+  <data name="PageShowOptions_1012_name" xml:space="preserve">
+    <value>Never</value>
+  </data>
+  <data name="PageShowOptions_1013_name" xml:space="preserve">
+    <value>Clear Statistics</value>
+  </data>
 </root>

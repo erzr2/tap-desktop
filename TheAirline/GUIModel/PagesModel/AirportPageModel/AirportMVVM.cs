@@ -201,7 +201,6 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
 
             this.FreeGates = this.Airport.Terminals.NumberOfFreeGates;
                        
-
             this.CanBuildHub = this.Contracts.Count(c => c.Airline == GameObject.GetInstance().HumanAirline) > 0;
 
             foreach (AirportTerminalMVVM terminal in Terminals)

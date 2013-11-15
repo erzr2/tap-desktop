@@ -548,8 +548,11 @@ namespace TheAirline.Model.GeneralModel.Helpers
                 AirlineHelpers.CheckInsuranceSettlements(a);
                 foreach (FleetAirliner airliner in a.Fleet)
                 {
-                    FleetAirlinerHelpers.DoMaintenance(airliner);
-                    FleetAirlinerHelpers.RestoreMaintRoutes(airliner);
+                    if (airliner != null)
+                    {
+                        FleetAirlinerHelpers.DoMaintenance(airliner);
+                        FleetAirlinerHelpers.RestoreMaintRoutes(airliner);
+                    }
                 }
             }
 
