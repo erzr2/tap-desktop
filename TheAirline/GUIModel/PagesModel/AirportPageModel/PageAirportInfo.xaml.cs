@@ -189,8 +189,9 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
         private void btnExtendContract_Click(object sender, RoutedEventArgs e)
         {
             ContractMVVM tContract = (ContractMVVM)((Button)sender).Tag;
+
            
-              WPFMessageBoxResult result = WPFMessageBox.Show(Translator.GetInstance().GetString("MessageBox", "2228"), string.Format(Translator.GetInstance().GetString("MessageBox", "2228", "message"),length), WPFMessageBoxButtons.YesNo);
+              WPFMessageBoxResult result = WPFMessageBox.Show(Translator.GetInstance().GetString("MessageBox", "2228"), string.Format(Translator.GetInstance().GetString("MessageBox", "2228", "message"),2), WPFMessageBoxButtons.YesNo);
 
               if (result == WPFMessageBoxResult.Yes)
               {

@@ -87,10 +87,10 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
             var domesticDemand = demands.Where(a => new CountryCurrentCountryConverter().Convert(a.Profile.Country) == new CountryCurrentCountryConverter().Convert(this.Airport.Profile.Country));
            
             foreach (Airport destination in internationalDemand.Take(Math.Min(50,internationalDemand.Count())))
-                this.Demands.Add(new DemandMVVM(destination, (int)this.Airport.getDestinationPassengersRate(destination, AirlinerClass.ClassType.Economy_Class), (int)this.Airport.getDestinationCargoRate(destination),DemandMVVM.DestinationType.International));
+                this.Demands.Add(new DemandMVVM(destination, (int)this.Airport.getDestinationPassengersRate(destination, AirlinerClass.ClassType.Economy_Class),(int)this.Airport.Profile.Pax, (int)this.Airport.getDestinationCargoRate(destination),DemandMVVM.DestinationType.International));
 
             foreach (Airport destination in domesticDemand.Take(Math.Min(50, domesticDemand.Count())))
-                this.Demands.Add(new DemandMVVM(destination, (int)this.Airport.getDestinationPassengersRate(destination, AirlinerClass.ClassType.Economy_Class), (int)this.Airport.getDestinationCargoRate(destination), DemandMVVM.DestinationType.Domestic));
+                this.Demands.Add(new DemandMVVM(destination, (int)this.Airport.getDestinationPassengersRate(destination, AirlinerClass.ClassType.Economy_Class),(int)this.Airport.Profile.Pax, (int)this.Airport.getDestinationCargoRate(destination), DemandMVVM.DestinationType.Domestic));
             
             this.AirportFacilities = this.Airport.getAirportFacilities().FindAll(f => f.Airline == null).Select(f=>f.Facility).ToList();
 
@@ -298,6 +298,7 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
     {
         public int Cargo { get; set; }
         public int Passengers { get; set; }
+        public int TotalPax { get; set; }
         public Airport Destination { get; set; }
         public enum DestinationType { Domestic, International }
         public DestinationType Type{ get; set; }
@@ -307,10 +308,11 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
             get { return _contracted; }
             set { _contracted = value; NotifyPropertyChanged("Contracted"); }
         }
-        public DemandMVVM(Airport destination, int passengers, int cargo, DestinationType type)
+        public DemandMVVM(Airport destination, int passengers, int totalpax, int cargo, DestinationType type)
         {
             this.Cargo = cargo;
             this.Passengers = passengers;
+            this.TotalPax = totalpax;
             this.Destination = destination;
             this.Type = type;
             this.Contracted = this.Destination.AirlineContracts.Exists(c => c.Airline == GameObject.GetInstance().HumanAirline);
