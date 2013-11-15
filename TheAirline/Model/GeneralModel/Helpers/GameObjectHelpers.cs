@@ -563,6 +563,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
         //do the yearly update
         private static void DoYearlyUpdate()
         {
+            AirlineHelpers.ClearRoutesStatistics();
             //updates holidays 
             GeneralHelpers.CreateHolidays(GameObject.GetInstance().GameTime.Year);
 
