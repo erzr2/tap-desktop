@@ -61,7 +61,7 @@
                                             <Button.Style>
                                                 <Style>
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Facility.Airline.IsHuman}" Value="False">
+                                                        <DataTrigger Binding="{Binding IsHuman}" Value="False">
                                                             <Setter Property="Button.Visibility" Value="Collapsed" />
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding IsDelivered}" Value="False">
@@ -76,7 +76,7 @@
                                             <WrapPanel.Style>
                                                 <Style>
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Facility.Airline.IsHuman}" Value="False">
+                                                        <DataTrigger Binding="{Binding IsHuman}" Value="False">
                                                             <Setter Property="WrapPanel.Visibility" Value="Collapsed" />
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding ElementName=txtUpgrade, Path=Text}" Value="None">

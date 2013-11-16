@@ -462,8 +462,7 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
         }
     }
     //the mvvm object for airport flights
-    //the class for a destination with number of weekly flights
-    public class DestinationFlightsMVVM
+     public class DestinationFlightsMVVM
     {
         public int Flights { get; set; }
         public Airport Airport { get; set; }
@@ -495,10 +494,12 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
         public AirlineAirportFacility Facility { get; set; }
         public Alliance Alliance { get; set; }
         public Boolean IsDelivered { get; set; }
+        public Boolean IsHuman { get; set; }
         public AirlineAirportFacilityMVVM(AirlineAirportFacility facility, Alliance alliance)
         {
             this.Facility = facility;
             this.Alliance = alliance;
+            this.IsHuman = GameObject.GetInstance().HumanAirline == facility.Airline;
             this.IsDelivered = facility.FinishedDate < GameObject.GetInstance().GameTime;
         }
     }

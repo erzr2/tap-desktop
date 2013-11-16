@@ -286,7 +286,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             airportHomeBase.addAirportFacility(sAirline, checkinFacility, GameObject.GetInstance().GameTime);
 
             if (!AirportHelpers.HasFreeGates(airportHomeBase, sAirline))
-                AirportHelpers.RentGates(airportHomeBase, sAirline);
+                AirportHelpers.RentGates(airportHomeBase, sAirline,2);
 
             Airlines.AddAirline(sAirline);
 

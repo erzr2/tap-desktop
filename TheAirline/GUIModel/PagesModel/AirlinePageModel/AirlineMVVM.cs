@@ -194,6 +194,8 @@ namespace TheAirline.GUIModel.PagesModel.AirlinePageModel
             AirlineHelpers.AddSubsidiaryAirline(GameObject.GetInstance().MainAirline, airline, airline.Money, airline.Airports[0]);
             airline.Airports.RemoveAt(0);
 
+            Months lefy
+
             this.MaxSubsidiaryMoney = this.Airline.Money / 2;
 
             this.AirlineAirlines.Add(airline);
