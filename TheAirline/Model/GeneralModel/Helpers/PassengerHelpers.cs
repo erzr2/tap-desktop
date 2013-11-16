@@ -127,7 +127,7 @@ namespace TheAirline.Model.GeneralModel
             {
                 Airport tDest = route.Destination1 == airportDestination ? route.Destination2 : route.Destination1;
 
-                double totalDistance = MathHelpers.GetDistance(airportCurrent, tDest);
+                double totalDistance = airportCurrent.Profile.Coordinates.GetDistanceTo(tDest.Profile.Coordinates) / 1000;
 
                 int directRoutes = AirportHelpers.GetNumberOfAirportsRoutes(airportCurrent, tDest);
 
@@ -142,7 +142,7 @@ namespace TheAirline.Model.GeneralModel
             {
                 Airport tDest = route.Destination1 == airportCurrent ? route.Destination2 : route.Destination1;
 
-                double totalDistance = MathHelpers.GetDistance(tDest, airportDestination);
+                double totalDistance = tDest.Profile.Coordinates.GetDistanceTo(airportDestination.Profile.Coordinates) / 1000;
 
                 int directRoutes = AirportHelpers.GetNumberOfAirportsRoutes(tDest, airportDestination);
 
@@ -162,7 +162,7 @@ namespace TheAirline.Model.GeneralModel
                 {
                     Airport tDest = route.Destination1 == airportDestination ? route.Destination2 : route.Destination1;
 
-                    double totalDistance = MathHelpers.GetDistance(airportCurrent, tDest);
+                    double totalDistance = airportCurrent.Profile.Coordinates.GetDistanceTo(tDest.Profile.Coordinates) / 1000;
 
                     int directRoutes = AirportHelpers.GetNumberOfAirportsRoutes(airportCurrent, tDest);
 
@@ -177,7 +177,7 @@ namespace TheAirline.Model.GeneralModel
                 {
                     Airport tDest = route.Destination1 == airportCurrent ? route.Destination2 : route.Destination1;
 
-                    double totalDistance = MathHelpers.GetDistance(tDest, airportDestination);
+                    double totalDistance = tDest.Profile.Coordinates.GetDistanceTo(airportDestination.Profile.Coordinates) / 1000;
 
                     int directRoutes = AirportHelpers.GetNumberOfAirportsRoutes(tDest, airportDestination);
 
