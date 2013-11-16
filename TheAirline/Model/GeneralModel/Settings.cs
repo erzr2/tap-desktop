@@ -61,6 +61,11 @@ namespace TheAirline.Model.GeneralModel
                 Instance = new Settings();
             return Instance;
         }
+        public static void SetInstance(Settings instance)
+        {
+            Instance = instance;
+        }
+
         //sets the speed of the game
         public void setGameSpeed(GeneralHelpers.GameSpeedValue gameSpeed)
         {

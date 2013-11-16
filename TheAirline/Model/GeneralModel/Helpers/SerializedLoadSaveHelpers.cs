@@ -105,7 +105,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             {
                 so.instance = GameObject.GetInstance();
                 so.settings = Settings.GetInstance();
-                so.savetype = "new";
+                so.savetype = "039";
                 so.saveversionnumber = 1;
             });
 
@@ -207,7 +207,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             },
             () =>
             {   //Do this only with new savegames for now
-                if (loading == "new")
+                if (loading == "new" || loading == "039")
                 {
                     FeeTypes.Clear();
 
@@ -217,7 +217,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             },
             () =>
             {   //Do this only with new savegames for now
-                if (loading == "new")
+                if (loading == "new" || loading == "039")
                 {
                     AdvertisementTypes.Clear();
 
@@ -227,7 +227,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             },
             () =>
             {   //Do this only with new savegames for now
-                if (loading == "new" && version >= 1)
+                if (loading == "039")
                 {
                     
                     AirlinerFacilities.Clear();
@@ -238,7 +238,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             },
              () =>
              {   //Do this only with new savegames for now
-                 if (loading == "new")
+                 if (loading == "new" || loading == "039")
                  {
                      RouteFacilities.Clear();
 
@@ -248,7 +248,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
              },
             () =>
             {
-                GameObject.SetInstance(deserializedSaveObject.instance);
+                if (loading == "039") { GameObject.SetInstance(deserializedSaveObject.instance); }
                 Settings.SetInstance(deserializedSaveObject.settings);
             }); //close parallel.invoke
 
