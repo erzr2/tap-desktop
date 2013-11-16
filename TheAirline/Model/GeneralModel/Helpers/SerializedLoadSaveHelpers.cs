@@ -42,13 +42,16 @@ namespace TheAirline.Model.GeneralModel.Helpers
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
-            //Clearing stats because there is no need for saving those.
-            if (name != "autosave")
-            {
+           //Clearing stats because there is no need for saving those.
+           if (name != "autosave")
+           {
                 Airports.GetAllAirports().ForEach(a => a.clearDestinationPassengerStatistics());
                 Airports.GetAllAirports().ForEach(a => a.clearDestinationCargoStatistics());
                 AirlineHelpers.ClearRoutesStatistics();
-            }
+                AirlineHelpers.ClearAirlinesStatistics();
+                AirportHelpers.ClearAirportStatistics();
+           }
+            
             SaveObject so = new SaveObject();
             Parallel.Invoke(() =>
             {
@@ -111,7 +114,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
             using (Stream stream = new FileStream(fileName, FileMode.Create))
             {
-                using (DeflateStream compress = new DeflateStream(stream, CompressionLevel.Optimal))
+                using (DeflateStream compress = new DeflateStream(stream, CompressionLevel.Fastest))
                 {
                     serializer.WriteObject(compress, so);
                 }

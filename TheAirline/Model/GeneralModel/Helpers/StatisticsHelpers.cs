@@ -14,7 +14,7 @@ using TheAirline.Model.AirlinerModel.RouteModel;
 
 namespace TheAirline.Model.GeneralModel.Helpers
 {
-    public class StatisticsHelpers
+    public static class StatisticsHelpers
     {
         
             //generate a 1-100 scale for a list of values
