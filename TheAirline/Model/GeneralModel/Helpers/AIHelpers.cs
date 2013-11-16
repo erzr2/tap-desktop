@@ -625,8 +625,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
                             if (!AirportHelpers.HasFreeGates(destination, airline))
                                 AirportHelpers.RentGates(airport, airline);
 
-                            airline.addRoute(route);
-
+                          
                             //Console.WriteLine("{3}: {0} has created a route between {1} and {2}", airline.Profile.Name, route.Destination1.Profile.Name, route.Destination2.Profile.Name,GameObject.GetInstance().GameTime.ToShortDateString());
 
                             if (fAirliner == null)
@@ -669,8 +668,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
                             NewsFeeds.AddNewsFeed(new NewsFeed(GameObject.GetInstance().GameTime, string.Format(Translator.GetInstance().GetString("NewsFeed", "1001"), airline.Profile.Name, new AirportCodeConverter().Convert(route.Destination1), new AirportCodeConverter().Convert(route.Destination2))));
 
-                            fAirliner.addRoute(route);
-
+                          
                             if (route.Type == Route.RouteType.Passenger || route.Type == Route.RouteType.Mixed)
                             {
 
@@ -688,6 +686,10 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
                             route.LastUpdated = GameObject.GetInstance().GameTime;
                         }
+                        airline.addRoute(route);
+
+                        fAirliner.addRoute(route);
+
 
                         AirportFacility checkinFacility = AirportFacilities.GetFacilities(AirportFacility.FacilityType.CheckIn).Find(f => f.TypeLevel == 1);
                         AirportFacility cargoTerminal = AirportFacilities.GetFacilities(AirportFacility.FacilityType.Cargo).Find(f => f.TypeLevel > 0);
