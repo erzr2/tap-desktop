@@ -44,7 +44,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
                 GameObject.GetInstance().GameTime = GameObject.GetInstance().GameTime.AddDays(1);
 
                 DoDailyUpdate();
-
+              
                 if (MathHelpers.IsNewMonth(GameObject.GetInstance().GameTime)) DoMonthlyUpdate();
 
                 if (MathHelpers.IsNewYear(GameObject.GetInstance().GameTime)) DoYearlyUpdate();
@@ -66,13 +66,12 @@ namespace TheAirline.Model.GeneralModel.Helpers
             }
             else
             {
-
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
                 GameObject.GetInstance().GameTime = GameObject.GetInstance().GameTime.AddMinutes(Settings.GetInstance().MinutesPerTurn);
 
                 CalibrateTime();
-
+                
                 if (MathHelpers.IsNewDay(GameObject.GetInstance().GameTime)) DoDailyUpdate();
 
                 if (MathHelpers.IsNewYear(GameObject.GetInstance().GameTime)) DoYearlyUpdate();
@@ -109,7 +108,15 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
         //do the daily update
         private static void DoDailyUpdate()
-        {
+        { 
+            //Clear stats when it on daily update
+            if (Settings.GetInstance().ClearStats == Settings.Intervals.Daily)
+                AirlineHelpers.ClearRoutesStatistics();
+
+            //Auto save when it on daily
+            if (Settings.GetInstance().AutoSave == Settings.Intervals.Daily)
+                SerializedLoadSaveHelpers.SaveGame("autosave");
+            
             //Clearing stats as an RAM work-a-round
             Airports.GetAllAirports().ForEach(a => a.clearDestinationPassengerStatistics());
             Airports.GetAllAirports().ForEach(a => a.clearDestinationCargoStatistics());
@@ -566,6 +573,14 @@ namespace TheAirline.Model.GeneralModel.Helpers
         //do the yearly update
         private static void DoYearlyUpdate()
         {
+            //Clear stats when it on yearly
+            if (Settings.GetInstance().ClearStats == Settings.Intervals.Yearly)
+                AirlineHelpers.ClearRoutesStatistics();
+
+            //Auto save when it on yearly
+            if (Settings.GetInstance().AutoSave == Settings.Intervals.Yearly)
+                SerializedLoadSaveHelpers.SaveGame("autosave");
+
             AirlineHelpers.ClearRoutesStatistics();
             //updates holidays 
             GeneralHelpers.CreateHolidays(GameObject.GetInstance().GameTime.Year);
@@ -613,6 +628,14 @@ namespace TheAirline.Model.GeneralModel.Helpers
         //do the monthly update
         private static void DoMonthlyUpdate()
         {
+            //Clear stats when it on monthly
+            if (Settings.GetInstance().ClearStats == Settings.Intervals.Monthly)
+                AirlineHelpers.ClearRoutesStatistics();
+
+            //Auto save when it on monthly
+            if (Settings.GetInstance().AutoSave == Settings.Intervals.Monthly)
+                SerializedLoadSaveHelpers.SaveGame("autosave");
+
             //creates some new used airliners for the year
 
             //Set the amount if planes that should be made

@@ -37,9 +37,6 @@ namespace TheAirline.Model.GeneralModel.Helpers
         //saves a game
         public static void SaveGame(string name)
         {
-            //Pause the game so we can save without the clock running :)
-            GameObjectWorker.GetInstance().pause();
-
             string fileName = AppSettings.getCommonApplicationDataPath() + "\\saves\\" + name + ".sav";
 
             Stopwatch sw = new Stopwatch();
@@ -48,6 +45,8 @@ namespace TheAirline.Model.GeneralModel.Helpers
             //Clearing stats because there is no need for saving those.
             Airports.GetAllAirports().ForEach(a => a.clearDestinationPassengerStatistics());
             Airports.GetAllAirports().ForEach(a => a.clearDestinationCargoStatistics());
+            AirlineHelpers.ClearAirlinesStatistics();
+            AirportHelpers.ClearAirportStatistics();
             AirlineHelpers.ClearRoutesStatistics();
 
             SaveObject so = new SaveObject();
@@ -102,8 +101,9 @@ namespace TheAirline.Model.GeneralModel.Helpers
             }, () =>
             {
                 so.instance = GameObject.GetInstance();
+                so.settings = Settings.GetInstance();
                 so.savetype = "new";
-                so.saveversion = "039";
+                so.saveversionnumber = 1;
             });
 
 
@@ -129,7 +129,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             DataContractSerializer serializer = new DataContractSerializer(typeof(SaveObject));
             SaveObject deserializedSaveObject;
             string loading;
-            string version;
+            int version;
 
             using (FileStream stream = new FileStream(fileName, FileMode.Open))
             {
@@ -140,7 +140,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             }
 
             loading = deserializedSaveObject.savetype;
-            version = deserializedSaveObject.saveversion;
+            version = deserializedSaveObject.saveversionnumber;
 
             //Parrarel for loading the game
             Parallel.Invoke(() =>
@@ -224,7 +224,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             },
             () =>
             {   //Do this only with new savegames for now
-                if (loading == "new")
+                if (loading == "new" && version >= 1)
                 {
                     
                     AirlinerFacilities.Clear();
@@ -246,6 +246,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             () =>
             {
                 GameObject.SetInstance(deserializedSaveObject.instance);
+                Settings.SetInstance(deserializedSaveObject.settings);
             }); //close parallel.invoke
 
             //Maybe this helps? But i doubt this is the best way
@@ -295,10 +296,13 @@ namespace TheAirline.Model.GeneralModel.Helpers
         public GameObject instance { get; set; }
 
         [DataMember]
+        public Settings settings { get; set; }
+
+        [DataMember]
         public string savetype { get; set; }
 
         [DataMember]
-        public string saveversion { get; set; }
+        public int saveversionnumber { get; set; }
 
         [DataMember]
         public List<Configuration> configurationList { get; set; }
