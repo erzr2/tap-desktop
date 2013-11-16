@@ -637,11 +637,13 @@ namespace TheAirline.Model.GeneralModel.Helpers
                 SerializedLoadSaveHelpers.SaveGame("autosave");
 
             //creates some new used airliners for the year
+            int gametime = GameObject.GetInstance().GameTime.Year - GameObject.GetInstance().StartDate.Year;
 
             //Set the amount if planes that should be made
-            int upper = Airlines.GetAllAirlines().Count;
-            int lower = Airlines.GetAllAirlines().Count/2;
-            
+            int upper = Airlines.GetAllAirlines().Count - gametime;
+            int lower = Airlines.GetAllAirlines().Count - gametime / 2;
+            if (upper <= 0) { upper = 5; }
+            if (lower <= 0) { lower = 1; }
             int airliners = rnd.Next(lower, upper);
 
             for (int i = 0; i < airliners; i++) { 
