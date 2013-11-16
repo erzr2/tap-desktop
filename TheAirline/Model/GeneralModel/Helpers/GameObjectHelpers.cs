@@ -640,8 +640,8 @@ namespace TheAirline.Model.GeneralModel.Helpers
             int gametime = GameObject.GetInstance().GameTime.Year - GameObject.GetInstance().StartDate.Year;
 
             //Set the amount if planes that should be made
-            int upper = Airlines.GetAllAirlines().Count - gametime;
-            int lower = Airlines.GetAllAirlines().Count - gametime / 2;
+            int upper = Airlines.GetAllAirlines().Count - (gametime * 2);
+            int lower = (Airlines.GetAllAirlines().Count - (gametime * 2)) / 2;
             if (upper <= 0) { upper = 5; }
             if (lower <= 0) { lower = 1; }
             int airliners = rnd.Next(lower, upper);

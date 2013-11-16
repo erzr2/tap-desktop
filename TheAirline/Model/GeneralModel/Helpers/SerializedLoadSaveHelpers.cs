@@ -43,12 +43,12 @@ namespace TheAirline.Model.GeneralModel.Helpers
             sw.Start();
 
             //Clearing stats because there is no need for saving those.
-            Airports.GetAllAirports().ForEach(a => a.clearDestinationPassengerStatistics());
-            Airports.GetAllAirports().ForEach(a => a.clearDestinationCargoStatistics());
-            AirlineHelpers.ClearAirlinesStatistics();
-            AirportHelpers.ClearAirportStatistics();
-            AirlineHelpers.ClearRoutesStatistics();
-
+            if (name != "autosave")
+            {
+                Airports.GetAllAirports().ForEach(a => a.clearDestinationPassengerStatistics());
+                Airports.GetAllAirports().ForEach(a => a.clearDestinationCargoStatistics());
+                AirlineHelpers.ClearRoutesStatistics();
+            }
             SaveObject so = new SaveObject();
             Parallel.Invoke(() =>
             {
