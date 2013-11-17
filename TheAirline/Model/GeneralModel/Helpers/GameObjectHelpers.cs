@@ -668,7 +668,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
                 Airliners.AddAirliner(AirlinerHelpers.CreateAirlinerFromYear(GameObject.GetInstance().GameTime.Year - 1));
             }
             //deletes all used airliners older than 1 years
-            List<Airliner> oldAirliners = new List<Airliner>(Airliners.GetAirlinersForSale(a => a.BuiltDate.Year == GameObject.GetInstance().GameTime.Year - 2));
+            List<Airliner> oldAirliners = new List<Airliner>(Airliners.GetAirlinersForSale(a => a.BuiltDate.Year <= GameObject.GetInstance().GameTime.Year - 2));
 
             foreach (Airliner airliner in oldAirliners)
                 Airliners.RemoveAirliner(airliner);
