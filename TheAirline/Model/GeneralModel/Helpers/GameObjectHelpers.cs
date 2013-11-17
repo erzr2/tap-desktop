@@ -111,13 +111,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
         { 
             //Clear stats when it on daily update
             if (Settings.GetInstance().ClearStats == Settings.Intervals.Daily)
-            {
-                Airports.GetAllAirports().ForEach(a => a.clearDestinationPassengerStatistics());
-                Airports.GetAllAirports().ForEach(a => a.clearDestinationCargoStatistics());
-                AirlineHelpers.ClearRoutesStatistics();
-                AirlineHelpers.ClearAirlinesStatistics();
-                AirportHelpers.ClearAirportStatistics();
-            }
+                ClearAllUsedStats();
 
             //Auto save when it on daily
             if (Settings.GetInstance().AutoSave == Settings.Intervals.Daily)
@@ -581,13 +575,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
         {
             //Clear stats when it on yearly
             if (Settings.GetInstance().ClearStats == Settings.Intervals.Yearly)
-            {
-                Airports.GetAllAirports().ForEach(a => a.clearDestinationPassengerStatistics());
-                Airports.GetAllAirports().ForEach(a => a.clearDestinationCargoStatistics());
-                AirlineHelpers.ClearRoutesStatistics();
-                AirlineHelpers.ClearAirlinesStatistics();
-                AirportHelpers.ClearAirportStatistics();
-            }
+                ClearAllUsedStats();
 
             //Auto save when it on yearly
             if (Settings.GetInstance().AutoSave == Settings.Intervals.Yearly)
@@ -642,33 +630,28 @@ namespace TheAirline.Model.GeneralModel.Helpers
         {
             //Clear stats when it on monthly
             if (Settings.GetInstance().ClearStats == Settings.Intervals.Monthly)
-            {
-                Airports.GetAllAirports().ForEach(a => a.clearDestinationPassengerStatistics());
-                Airports.GetAllAirports().ForEach(a => a.clearDestinationCargoStatistics());
-                AirlineHelpers.ClearRoutesStatistics();
-                AirlineHelpers.ClearAirlinesStatistics();
-                AirportHelpers.ClearAirportStatistics();
-            }
+                ClearAllUsedStats();
                 
             //Auto save when it on monthly
             if (Settings.GetInstance().AutoSave == Settings.Intervals.Monthly)
                 SerializedLoadSaveHelpers.SaveGame("autosave");
 
-            //creates some new used airliners for the year
+            //deletes all used airliners older than 1 years
+            List<Airliner> oldAirliners = new List<Airliner>(Airliners.GetAirlinersForSale(a => a.BuiltDate.Year <= GameObject.GetInstance().GameTime.Year - 2));
+
+            //creates some new used airliners
             int gametime = GameObject.GetInstance().GameTime.Year - GameObject.GetInstance().StartDate.Year;
 
-            //Set the amount if planes that should be made
-            int upper = Airlines.GetAllAirlines().Count - (gametime * 5);
-            int lower = (Airlines.GetAllAirlines().Count - (gametime * 5)) / 2;
-            if (upper <= 0) { upper = 5; }
+            //Set the amount if planes that should be made its decreased alot over time
+            int upper = (Airlines.GetAllAirlines().Count - (gametime * 5)) / 2;
+            int lower = (Airlines.GetAllAirlines().Count - (gametime * 5)) / 4;
+            if (upper <= 0) { upper = 3; }
             if (lower <= 0) { lower = 1; }
             int airliners = rnd.Next(lower, upper);
 
             for (int i = 0; i < airliners; i++) { 
-                Airliners.AddAirliner(AirlinerHelpers.CreateAirlinerFromYear(GameObject.GetInstance().GameTime.Year - 1));
+                Airliners.AddAirliner(AirlinerHelpers.CreateAirlinerFromYear(GameObject.GetInstance().GameTime.Year - rnd.Next(1,10)));
             }
-            //deletes all used airliners older than 1 years
-            List<Airliner> oldAirliners = new List<Airliner>(Airliners.GetAirlinersForSale(a => a.BuiltDate.Year <= GameObject.GetInstance().GameTime.Year - 2));
 
             foreach (Airliner airliner in oldAirliners)
                 Airliners.RemoveAirliner(airliner);
@@ -702,6 +685,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
             }
 
+            //check if pilots are retireing
             int retirementAge = Pilot.RetirementAge;
 
             Parallel.ForEach(Airlines.GetAllAirlines(), airline =>
@@ -1735,6 +1719,15 @@ namespace TheAirline.Model.GeneralModel.Helpers
             //Task t2 = Task.Factory.StartNew(action, "passengers");
 
 
+        }
+
+        private static void ClearAllUsedStats()
+        {
+           Airports.GetAllAirports().ForEach(a => a.clearDestinationPassengerStatistics());
+           Airports.GetAllAirports().ForEach(a => a.clearDestinationCargoStatistics());
+           AirlineHelpers.ClearRoutesStatistics();
+           AirlineHelpers.ClearAirlinesStatistics();
+           AirportHelpers.ClearAirportStatistics();
         }
 
     }
