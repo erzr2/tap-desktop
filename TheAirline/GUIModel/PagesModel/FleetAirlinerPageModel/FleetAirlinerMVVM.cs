@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using TheAirline.Model.AirlinerModel;
+using TheAirline.Model.AirportModel;
 using TheAirline.Model.GeneralModel;
 using TheAirline.Model.GeneralModel.Helpers;
 using TheAirline.Model.GeneralModel.StatisticsModel;
@@ -66,12 +67,19 @@ namespace TheAirline.GUIModel.PagesModel.FleetAirlinerPageModel
             get { return _ismissingpilots; }
             set { _ismissingpilots = value; NotifyPropertyChanged("IsMissingPilots"); }
         }
+        private Airport _homebase;
+        public Airport Homebase
+        {
+            get { return _homebase; }
+            set { _homebase = value; NotifyPropertyChanged("Homebase"); }
+        }
         public FleetAirliner Airliner { get; set; }
         public ObservableCollection<AirlinerClassMVVM> Classes { get; set; }
         public ObservableCollection<Pilot> Pilots { get; set; }
         public FleetAirlinerMVVM(FleetAirliner airliner)
         {
             this.Airliner = airliner;
+            this.Homebase = this.Airliner.Homebase;
             this.Classes = new ObservableCollection<AirlinerClassMVVM>();
      
             AirlinerClass tClass = this.Airliner.Airliner.Classes[0];
