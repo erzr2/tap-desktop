@@ -278,14 +278,16 @@
                             </StackPanel.Style>
                             <TextBlock Text="{Binding Source={x:Null}, Converter={StaticResource TranslatorConverter},ConverterParameter='PageAirlineInfo 1031'}" VerticalAlignment="Bottom" Style="{StaticResource SmallHeaderStyle}"></TextBlock>
                         <WrapPanel>
-                            <ComboBox Name="cbTransferType" Width="50" SelectedIndex="0" Style="{DynamicResource ComboBoxTransparentStyle}" SelectionChanged="cbTransferType_SelectionChanged">
+                            <ComboBox Name="cbTransferType" Width="50" VerticalAlignment="Bottom" SelectedIndex="0" Style="{DynamicResource ComboBoxTransparentStyle}" SelectionChanged="cbTransferType_SelectionChanged">
                                 <ComboBoxItem IsSelected="True">To</ComboBoxItem>
                                 <ComboBoxItem>From</ComboBoxItem>
                             </ComboBox>
-                            <ComboBox Margin="5 0 0 0" Name="cbTransferAirline" Width="150" ItemTemplate="{StaticResource AirlineItem}" Style="{DynamicResource ComboBoxTransparentStyle}" ItemsSource="{Binding FundsAirlines}"></ComboBox>
-                            <Slider Minimum="1" Maximum="{Binding MaxTransferFunds}" Margin="5 0 0 0" Width="150" Name="slTransfer"></Slider>
+                            <ComboBox Margin="5 0 0 0" VerticalAlignment="Bottom" Name="cbTransferAirline" Width="150" ItemTemplate="{StaticResource AirlineItem}" Style="{DynamicResource ComboBoxTransparentStyle}" ItemsSource="{Binding FundsAirlines}"></ComboBox>
+                                <StackPanel>
+                                    <Slider Minimum="1" Maximum="{Binding MaxTransferFunds}" Margin="5 0 0 0" Width="150" Name="slTransfer"></Slider>
                             <TextBlock Text="{Binding Value,ElementName=slTransfer,Converter={StaticResource ValueCurrencyConverter}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5 0 0 0"></TextBlock>
-                      </WrapPanel>
+                                </StackPanel>
+                            </WrapPanel>
                         <Button Margin="0 5 0 0" Style="{StaticResource StandardButtonStyle}" HorizontalAlignment="Left" Click="btnTransferFunds_Click" Content="{Binding Source={x:Null}, Converter={StaticResource TranslatorConverter},ConverterParameter='PageAirlineInfo 203'}"/>
                         </StackPanel>
                     </StackPanel>

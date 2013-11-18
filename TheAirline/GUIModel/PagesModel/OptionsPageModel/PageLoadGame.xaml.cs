@@ -44,7 +44,18 @@ namespace TheAirline.GUIModel.PagesModel.OptionsPageModel
 
             
         }
+        private void btnDeleteGame_Click(object sender, RoutedEventArgs e)
+        {
+               string file = (string)lbSaves.SelectedItem;
+            WPFMessageBoxResult result = WPFMessageBox.Show(Translator.GetInstance().GetString("MessageBox", "1009"), Translator.GetInstance().GetString("MessageBox", "1009", "message"), WPFMessageBoxButtons.YesNo);
 
+            if (result == WPFMessageBoxResult.Yes)
+            {
+                SerializedLoadSaveHelpers.DeleteSavedGame(file);
+
+                Saves.Remove(file);
+            }
+        }
         private void btnLoadGame_Click(object sender, RoutedEventArgs e)
         {
            

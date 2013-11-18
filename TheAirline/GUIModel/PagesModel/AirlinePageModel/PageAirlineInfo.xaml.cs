@@ -366,10 +366,10 @@ namespace TheAirline.GUIModel.PagesModel.AirlinePageModel
 
         private void cbTransferType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cbTransferType != null && cbTransferAirline != null)
+            if (cbTransferType != null && cbTransferAirline != null && cbTransferAirline.SelectedItem != null)
             {
                 Airline airline = (Airline)cbTransferAirline.SelectedItem;
-                string transferType = cbTransferType.SelectedValue.ToString();
+                string transferType = (cbTransferType.SelectedItem as ComboBoxItem).Content.ToString();
 
                 if (transferType == "From")
                     this.Airline.setMaxTransferFunds(airline);
@@ -381,7 +381,7 @@ namespace TheAirline.GUIModel.PagesModel.AirlinePageModel
         private void btnTransferFunds_Click(object sender, RoutedEventArgs e)
         {
             Airline airline = (Airline)cbTransferAirline.SelectedItem;
-            string transferType = cbTransferType.SelectedValue.ToString();
+            string transferType = (cbTransferType.SelectedItem as ComboBoxItem).Content.ToString();
 
             double amount = slTransfer.Value;
 

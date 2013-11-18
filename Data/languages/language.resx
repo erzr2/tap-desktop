@@ -4482,4 +4482,13 @@ Good luck.</value>
   <data name="PageShowOptions_1013_name" xml:space="preserve">
     <value>Clear Statistics</value>
   </data>
+  <data name="MessageBox_1009_message" xml:space="preserve">
+    <value>Are you sure you want to delete the save game?</value>
+  </data>
+  <data name="MessageBox_1009_name" xml:space="preserve">
+    <value>Delete Game</value>
+  </data>
+  <data name="PageLoadSaveGame_202_name" xml:space="preserve">
+    <value>Delete Game</value>
+  </data>
 </root>

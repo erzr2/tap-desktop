@@ -279,13 +279,14 @@
                                             </Style.Triggers>
                                         </Style>
                                     </WrapPanel.Style>
-                                    <CheckBox Content="M" Name="cbMonday" VerticalAlignment="Bottom" Style="{StaticResource CheckboxLeftSideText}"></CheckBox>
+                                    <CheckBox Content="Su" Name="cbSunday" VerticalAlignment="Bottom" Style="{StaticResource CheckboxLeftSideText}"></CheckBox>
+                                    <CheckBox Content="M" Name="cbMonday" VerticalAlignment="Bottom" Margin="10 0 0 0" Style="{StaticResource CheckboxLeftSideText}"></CheckBox>
                                     <CheckBox Content="Tu" Name="cbTuesday" VerticalAlignment="Bottom" Margin="10 0 0 0" Style="{StaticResource CheckboxLeftSideText}"></CheckBox>
                                     <CheckBox Content="W" Name="cbWednesday" VerticalAlignment="Bottom" Margin="10 0 0 0" Style="{StaticResource CheckboxLeftSideText}"></CheckBox>
                                     <CheckBox Content="Th" Name="cbThursday" VerticalAlignment="Bottom" Margin="10 0 0 0" Style="{StaticResource CheckboxLeftSideText}"></CheckBox>
                                     <CheckBox Content="F" Name="cbFriday" VerticalAlignment="Bottom" Margin="10 0 0 0" Style="{StaticResource CheckboxLeftSideText}"></CheckBox>
                                     <CheckBox Content="Sa" Name="cbSaturday" VerticalAlignment="Bottom" Margin="10 0 0 0" Style="{StaticResource CheckboxLeftSideText}"></CheckBox>
-                                    <CheckBox Content="Su" Name="cbSunday" VerticalAlignment="Bottom" Margin="10 0 0 0" Style="{StaticResource CheckboxLeftSideText}"></CheckBox>
+                              
                                 </WrapPanel>
                                 <WrapPanel Margin="0 5 0 0" HorizontalAlignment="Center">
                                     <Button Content="{Binding Source={x:Null}, Converter={StaticResource TranslatorConverter},ConverterParameter='PageRoutePlanner 204'}" Margin="0 5 0 0" Click="btnAddScheduler_Click">

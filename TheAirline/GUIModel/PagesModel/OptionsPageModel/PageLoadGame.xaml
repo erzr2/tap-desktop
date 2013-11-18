@@ -30,6 +30,17 @@
                         </Style>
                     </Button.Style>
                 </Button>
+                <Button Content="{Binding Source={x:Null}, Converter={StaticResource TranslatorConverter},ConverterParameter='PageLoadSaveGame 202'}" Margin="5 0 0 0" Click="btnDeleteGame_Click">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource StandardButtonStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=txtName, Path=Text.Length}" Value="0">
+                                    <Setter Property="Button.IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </WrapPanel>
             <c:SplashControl Visibility="Collapsed" Text="Loading...." HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="scLoading"></c:SplashControl>
 

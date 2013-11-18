@@ -244,6 +244,12 @@ namespace TheAirline.Model.GeneralModel.Helpers
                     airline.Airline.addAirport(airports[i]);
                 }
 
+                foreach (AirportFacility facility in airports[i].getCurrentAirportFacilities(airline))
+                {
+                    if (airports[i].getAirlineAirportFacility(airline.Airline, facility.Type).Facility.TypeLevel < facility.TypeLevel)
+                        airports[i].setAirportFacility(airline.Airline, facility, GameObject.GetInstance().GameTime);
+                }
+
                 airports[i].clearFacilities(airline);
 
 
