@@ -499,7 +499,7 @@ namespace TheAirline.GUIModel.HelpersModel
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Airliner airliner = (Airliner)value;
+            Airliner airliner = Airliners.GetAirliner(value.ToString());
 
             return string.Join("-", from c in airliner.Classes select AirlinerHelpers.GetAirlinerClassCode(c));
    

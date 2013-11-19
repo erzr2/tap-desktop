@@ -260,7 +260,10 @@ namespace TheAirline.Model.AirlineModel
         //adds a fleet airliner to the airlines fleet
         public void addAirliner(FleetAirliner airliner)
         {
-            this.Fleet.Add(airliner);
+            lock (this.Fleet)
+            {
+                this.Fleet.Add(airliner);
+            }
         }
         //remove a fleet airliner from the airlines fleet
         public void removeAirliner(FleetAirliner airliner)

@@ -285,7 +285,7 @@ namespace TheAirline.GUIModel.PagesModel.FleetAirlinerPageModel
 
             cbHomebase.SelectedIndex = 0;
 
-            if (PopUpSingleElement.ShowPopUp(Translator.GetInstance().GetString("PageFleetAirlinerInformation", "1011"), cbHomebase) == PopUpSingleElement.ButtonSelected.OK && cbHomebase.SelectedItem != null)
+            if (PopUpSingleElement.ShowPopUp(Translator.GetInstance().GetString("PageFleetAirlinerInformation", "1014"), cbHomebase) == PopUpSingleElement.ButtonSelected.OK && cbHomebase.SelectedItem != null)
             {
                 Airport homebase = cbHomebase.SelectedItem as Airport;
                 this.Airliner.Homebase = homebase;

@@ -4491,4 +4491,13 @@ Good luck.</value>
   <data name="PageLoadSaveGame_202_name" xml:space="preserve">
     <value>Delete Game</value>
   </data>
+  <data name="PageFleetAirlinerInformation_1014_name" xml:space="preserve">
+    <value>Select Homebase</value>
+  </data>
+  <data name="PageUsedAirliners_200_name" xml:space="preserve">
+    <value>Buy Airliners</value>
+  </data>
+  <data name="PageUsedAirliners_201_name" xml:space="preserve">
+    <value>Lease Airliners</value>
+  </data>
 </root>
