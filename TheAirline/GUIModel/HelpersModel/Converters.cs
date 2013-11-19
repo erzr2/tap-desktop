@@ -12,6 +12,7 @@ using TheAirline.Model.AirlinerModel;
 using TheAirline.Model.AirportModel;
 using TheAirline.Model.GeneralModel;
 using TheAirline.Model.GeneralModel.CountryModel;
+using TheAirline.Model.GeneralModel.Helpers;
 
 namespace TheAirline.GUIModel.HelpersModel
 {
@@ -491,6 +492,23 @@ namespace TheAirline.GUIModel.HelpersModel
         {
             throw new NotImplementedException();
         }
+    }
+    //the converter for the airliner class for a fleet airliner
+    public class AirlinerClassCodeConverter : IValueConverter
+    {
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            Airliner airliner = (Airliner)value;
+
+            return string.Join("-", from c in airliner.Classes select AirlinerHelpers.GetAirlinerClassCode(c));
+   
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+      
     }
 
 }

@@ -322,12 +322,13 @@
                                 <GridViewColumn Header="{Binding Source={x:Null}, Converter={StaticResource TranslatorConverter},ConverterParameter='PageAirlineInfo 1008'}" util:GridViewSort.PropertyName="Name" Width="100">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            
-                                            <TextBlock VerticalAlignment="Bottom">
+                                            <ContentControl Content="{Binding}" VerticalAlignment="Bottom" ContentTemplate="{StaticResource FleetAirlinerLink}"></ContentControl>
+                                            <!--
+                                           <TextBlock VerticalAlignment="Bottom">
                                                 <Hyperlink Tag="{Binding}" Click="lnkAirliner_Click">
                                                   <Run Text="{Binding Name}"></Run>
                                             </Hyperlink>
-                                            </TextBlock>
+                                            </TextBlock>-->
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

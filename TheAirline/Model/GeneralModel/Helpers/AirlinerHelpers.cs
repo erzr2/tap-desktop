@@ -192,11 +192,27 @@ namespace TheAirline.Model.GeneralModel.Helpers
             }
           
         }
-
+        //returns a random airliner for an airline
         public static FleetAirliner GetRandomAirliner(Airline airline)
         {
             return airline.Fleet[rnd.Next(airline.Fleet.Count)];
          
+        }
+        //returns the code for an airliner class
+        public static string GetAirlinerClassCode(AirlinerClass aClass)
+        {
+            string symbol = "Y";
+            
+            if (aClass.Type == AirlinerClass.ClassType.Business_Class)
+                symbol = "C";
+
+            if (aClass.Type == AirlinerClass.ClassType.First_Class)
+                symbol = "F";
+
+            if (aClass.Type == AirlinerClass.ClassType.Economy_Class)
+                symbol = "Y";
+
+            return string.Format("{0}{1}", aClass.SeatingCapacity, symbol);
         }
        
     }

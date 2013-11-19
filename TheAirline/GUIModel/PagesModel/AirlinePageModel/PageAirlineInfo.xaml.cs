@@ -165,13 +165,7 @@ namespace TheAirline.GUIModel.PagesModel.AirlinePageModel
             }
 
         }
-        private void lnkAirliner_Click(object sender, RoutedEventArgs e)
-        {
-            FleetAirliner airliner = (FleetAirliner)((Hyperlink)sender).Tag;
-
-            PageNavigator.NavigateTo(new PageFleetAirliner(airliner));
-        }
-
+      
         private void imgAirline_Click(object sender, MouseButtonEventArgs e)
         {
             Airline airline = (Airline)((Image)sender).Tag;
