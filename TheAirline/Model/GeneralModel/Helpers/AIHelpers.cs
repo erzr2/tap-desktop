@@ -43,7 +43,10 @@ namespace TheAirline.Model.GeneralModel.Helpers
                             {
                                 CheckForAirlinersWithoutRoutes(airline);
                             },
-
+                            () =>
+                            {
+                                CheckForOrderOfAirliners(airline);
+                            },
                             () =>
                             {
                                 CheckForAirlineAlliance(airline);
