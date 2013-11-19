@@ -33,7 +33,6 @@
                                     <CheckBox.Style>
                                         <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxNormalStyle}">
                                             <Style.Triggers>
-                                          
                                                 <Trigger Property="IsChecked" Value="True">
                                                     <Setter Property="IsEnabled" Value="True" />
                                                 </Trigger>

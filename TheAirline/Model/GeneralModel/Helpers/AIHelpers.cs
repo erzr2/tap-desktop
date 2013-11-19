@@ -56,6 +56,10 @@ namespace TheAirline.Model.GeneralModel.Helpers
                             () =>
                             {
                                 CheckForAirlineAirportFacilities(airline);
+                            },
+                            () =>
+                            {
+                                CheckForOrderOfAirliners(airline);
                             }
                         ); //close parallel.invoke
 
@@ -162,6 +166,13 @@ namespace TheAirline.Model.GeneralModel.Helpers
             Airport homeAirport = AIHelpers.GetRandomItem(airportsList);
 
             List<AirlinerType> types = AirlinerTypes.GetTypes(t => t.Produced.From <= GameObject.GetInstance().GameTime && t.Produced.To >= GameObject.GetInstance().GameTime && t.Price * numberToOrder < airline.Money);
+
+            if (airline.AirlineRouteFocus == Route.RouteType.Cargo)
+                types.RemoveAll(a => a.TypeAirliner == AirlinerType.TypeOfAirliner.Passenger);
+
+            if (airline.AirlineRouteFocus == Route.RouteType.Passenger)
+                types.RemoveAll(a => a.TypeAirliner == AirlinerType.TypeOfAirliner.Cargo);
+            
             types = types.OrderBy(t => t.Price).ToList();
 
             Dictionary<AirlinerType, int> list = new Dictionary<AirlinerType, int>();
@@ -174,12 +185,9 @@ namespace TheAirline.Model.GeneralModel.Helpers
             {
                 AirlinerType type = AIHelpers.GetRandomItem(list);
 
-                List<AirlinerClass> classes = new List<AirlinerClass>();
-                classes.Add(new AirlinerClass(AirlinerClass.ClassType.Economy_Class, ((AirlinerPassengerType)type).MaxSeatingCapacity));
-
-
+               
                 List<AirlinerOrder> orders = new List<AirlinerOrder>();
-                orders.Add(new AirlinerOrder(type, classes, numberToOrder, false));
+                orders.Add(new AirlinerOrder(type, AirlinerHelpers.GetAirlinerClasses(type), numberToOrder, false));
 
                 int days = rnd.Next(30);
                 AirlineHelpers.OrderAirliners(airline, orders, homeAirport, GameObject.GetInstance().GameTime.AddMonths(3).AddDays(days));
