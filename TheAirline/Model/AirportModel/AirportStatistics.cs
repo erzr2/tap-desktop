@@ -52,12 +52,15 @@ namespace TheAirline.Model.AirportModel
         //sets the value for a statistics type for an airline for a year
         public void setStatisticsValue(int year, Airline airline, StatisticsType type, int value)
         {
-            AirportStatisticsValue item = this.Stats.Find(s => s.Year == year && s.Airline == airline && s.Stat.Shortname == type.Shortname);
+            lock (this.Stats)
+            {
+                AirportStatisticsValue item = this.Stats.Find(s => s.Year == year && s.Airline == airline && s.Stat.Shortname == type.Shortname);
 
-            if (item == null)
-                this.Stats.Add(new AirportStatisticsValue(airline, year, type, value));
-            else
-                item.Value = value;
+                if (item == null)
+                    this.Stats.Add(new AirportStatisticsValue(airline, year, type, value));
+                else
+                    item.Value = value;
+            }
            
         }
      

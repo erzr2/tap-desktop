@@ -179,10 +179,14 @@ namespace TheAirline.Model.GeneralModel.Helpers
             types = types.OrderBy(t => t.Price).ToList();
 
             Dictionary<AirlinerType, int> list = new Dictionary<AirlinerType, int>();
+            
+            foreach (AirlinerType type in types)
+                list.Add(type,(int)((type.Range / (type.Price / 100000))));
+            /*
             Parallel.ForEach(types, t =>
                 {
                     list.Add(t, (int)((t.Range / (t.Price / 100000))));
-                });
+                });*/
 
             if (list.Keys.Count > 0)
             {
@@ -525,8 +529,12 @@ namespace TheAirline.Model.GeneralModel.Helpers
         //checks for a new route for an airline
         private static void CheckForNewRoute(Airline airline)
         {
-            List<FleetAirliner> fleet = new List<FleetAirliner>(airline.Fleet);
-            int airlinersInOrder = fleet.Count(a => a.Airliner.BuiltDate > GameObject.GetInstance().GameTime);
+            int airlinersInOrder;
+            lock (airline.Fleet)
+            {
+                List<FleetAirliner> fleet = new List<FleetAirliner>(airline.Fleet);
+                airlinersInOrder = fleet.Count(a => a.Airliner.BuiltDate > GameObject.GetInstance().GameTime);
+            }
 
             int newRouteInterval = 0;
             switch (airline.Mentality)
