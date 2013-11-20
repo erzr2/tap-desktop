@@ -3565,514 +3565,514 @@
     <value>服务与费用</value>
   </data>
   <data name="PageAirline_2004_name" xml:space="preserve">
-    <value></value>
+    <value>财政</value>
   </data>
   <data name="PageNewGame_1026_name" xml:space="preserve">
-    <value></value>
+    <value>开始游戏时暂停</value>
   </data>
   <data name="PageOptions_1000_name" xml:space="preserve">
-    <value></value>
+    <value>设置</value>
   </data>
   <data name="PageOptions_1001_name" xml:space="preserve">
-    <value></value>
+    <value>保存游戏</value>
   </data>
   <data name="PageOptions_1002_name" xml:space="preserve">
-    <value></value>
+    <value>读取游戏</value>
   </data>
   <data name="PageOptions_1003_name" xml:space="preserve">
-    <value></value>
+    <value>鸣谢</value>
   </data>
   <data name="MainMenu_3000_name" xml:space="preserve">
-    <value></value>
+    <value>开始新游戏</value>
   </data>
   <data name="MainMenu_3001_name" xml:space="preserve">
-    <value></value>
+    <value>退出游戏</value>
   </data>
   <data name="MainMenu_3002_name" xml:space="preserve">
-    <value></value>
+    <value>暂停游戏</value>
   </data>
   <data name="MainMenu_3003_name" xml:space="preserve">
-    <value></value>
+    <value>开始游戏</value>
   </data>
   <data name="PageAirlinesStatistics_1000_name" xml:space="preserve">
-    <value></value>
+    <value>航空公司</value>
   </data>
   <data name="PageAirlinesStatistics_1001_name" xml:space="preserve">
-    <value></value>
+    <value>口碑</value>
   </data>
   <data name="PageAirlinesStatistics_1002_name" xml:space="preserve">
-    <value></value>
+    <value>机队规模</value>
   </data>
   <data name="PageAirlinesStatistics_1003_name" xml:space="preserve">
-    <value></value>
+    <value>机队平均机龄</value>
   </data>
   <data name="PageAirlinesStatistics_1004_name" xml:space="preserve">
-    <value></value>
+    <value>目的地</value>
   </data>
   <data name="PageAirlinesStatistics_1005_name" xml:space="preserve">
-    <value></value>
+    <value>航班</value>
   </data>
   <data name="PageAirlinesStatistics_1006_name" xml:space="preserve">
-    <value></value>
+    <value>乘客</value>
   </data>
   <data name="PageAirlinesStatistics_1007_name" xml:space="preserve">
-    <value></value>
+    <value>每趟航班的乘客数</value>
   </data>
   <data name="PageAirlinesStatistics_1008_name" xml:space="preserve">
-    <value></value>
+    <value>航空公司盈利</value>
   </data>
   <data name="PageAirlines_2000_name" xml:space="preserve">
-    <value></value>
+    <value>航空公司</value>
   </data>
   <data name="PageFleetAirliner_2000_name" xml:space="preserve">
-    <value></value>
+    <value>信息</value>
   </data>
   <data name="PageFleetAirliner_2001_name" xml:space="preserve">
-    <value></value>
+    <value>航线和统计</value>
   </data>
   <data name="PageFleetAirliner_2002_name" xml:space="preserve">
-    <value></value>
+    <value>维护和保险</value>
   </data>
   <data name="PageLoadSaveGame_1000_name" xml:space="preserve">
-    <value></value>
+    <value>保存</value>
   </data>
   <data name="PageLoadSaveGame_1001_name" xml:space="preserve">
-    <value></value>
+    <value>读取游戏</value>
   </data>
   <data name="PageLoadSaveGame_200_name" xml:space="preserve">
-    <value></value>
+    <value>读取游戏</value>
   </data>
   <data name="PageLoadSaveGame_201_name" xml:space="preserve">
-    <value></value>
+    <value>保存游戏</value>
   </data>
   <data name="PageShowOptions_1000_name" xml:space="preserve">
-    <value></value>
+    <value>选择您的语言</value>
   </data>
   <data name="PageShowOptions_1001_name" xml:space="preserve">
-    <value></value>
+    <value>选择游戏速度</value>
   </data>
   <data name="PageShowOptions_1002_name" xml:space="preserve">
-    <value></value>
+    <value>显示机场代码</value>
   </data>
   <data name="PageShowOptions_1003_name" xml:space="preserve">
-    <value></value>
+    <value>选择每轮时间</value>
   </data>
   <data name="PageShowOptions_1004_name" xml:space="preserve">
-    <value></value>
+    <value>使用货币简写</value>
   </data>
   <data name="PageShowOptions_1005_name" xml:space="preserve">
-    <value></value>
+    <value>在每个航班着陆的时候以邮件通知我</value>
   </data>
   <data name="PageShowOptions_1006_name" xml:space="preserve">
-    <value></value>
+    <value>出现恶劣天气时提醒我</value>
   </data>
   <data name="PageShowOptions_200_name" xml:space="preserve">
-    <value></value>
+    <value>保存更新</value>
   </data>
   <data name="PageShowOptions_201_name" xml:space="preserve">
-    <value></value>
+    <value>还原改变</value>
   </data>
   <data name="PageAirlineFinances_1008_name" xml:space="preserve">
-    <value></value>
+    <value>航空公司的贷款</value>
   </data>
   <data name="PageAirlineFinances_1009_name" xml:space="preserve">
-    <value></value>
+    <value>贷款额</value>
   </data>
   <data name="PageAirlineFinances_1010_name" xml:space="preserve">
-    <value></value>
+    <value>月供</value>
   </data>
   <data name="PageAirlineFinances_1011_name" xml:space="preserve">
-    <value></value>
+    <value>剩余月份</value>
   </data>
   <data name="PageAirlineFinances_1012_name" xml:space="preserve">
-    <value></value>
+    <value>贷款长度</value>
   </data>
   <data name="PageAirlineFinances_1013_name" xml:space="preserve">
-    <value></value>
+    <value>贷款利率</value>
   </data>
   <data name="PageAirlineFinances_1014_name" xml:space="preserve">
-    <value></value>
+    <value>申请新贷款</value>
   </data>
   <data name="PageAirlineFinances_200_name" xml:space="preserve">
-    <value></value>
+    <value>申请贷款</value>
   </data>
   <data name="PageAirlineInfo_1013_name" xml:space="preserve">
-    <value></value>
+    <value>航空公司航线</value>
   </data>
   <data name="PageAirlineInfo_1014_name" xml:space="preserve">
-    <value></value>
+    <value>航路</value>
   </data>
   <data name="PageAirlineInfo_1015_name" xml:space="preserve">
-    <value></value>
+    <value>类型</value>
   </data>
   <data name="PageAirlineInfo_1016_name" xml:space="preserve">
-    <value></value>
+    <value>盈亏</value>
   </data>
   <data name="PageAirlineInfo_1017_name" xml:space="preserve">
-    <value></value>
+    <value>上座率</value>
   </data>
   <data name="PageAirlineInfo_1018_name" xml:space="preserve">
-    <value></value>
+    <value>添加子公司</value>
   </data>
   <data name="PageAirlineInfo_1019_name" xml:space="preserve">
-    <value></value>
+    <value>选择子公司名称</value>
   </data>
   <data name="PageAirlineInfo_1020_name" xml:space="preserve">
-    <value></value>
+    <value>设置IATA代码</value>
   </data>
   <data name="PageAirlineInfo_1021_name" xml:space="preserve">
-    <value></value>
+    <value>选择航空公司类型</value>
   </data>
   <data name="PageAirlineInfo_1022_name" xml:space="preserve">
-    <value></value>
+    <value>选择航空公司代表色</value>
   </data>
   <data name="PageAirlineInfo_1023_name" xml:space="preserve">
-    <value></value>
+    <value>选择航空公司标志</value>
   </data>
   <data name="PageAirlineInfo_1024_name" xml:space="preserve">
-    <value></value>
+    <value>选择基地</value>
   </data>
   <data name="PageAirlinesStatistics_3000_name" xml:space="preserve">
-    <value></value>
+    <value>这是航空公司的子公司</value>
   </data>
   <data name="PageUsedAirliner_1009_name" xml:space="preserve">
-    <value></value>
+    <value>建造时间</value>
   </data>
   <data name="PageShowAirports_1005_name" xml:space="preserve">
-    <value></value>
+    <value>仅显示公司拥有登机口的机场</value>
   </data>
   <data name="PageAirlineInfo_1025_name" xml:space="preserve">
-    <value></value>
+    <value>枢纽</value>
   </data>
   <data name="PageAirportFacilities_1000_name" xml:space="preserve">
-    <value></value>
+    <value>机场设施</value>
   </data>
   <data name="PageAirportFacilities_1004_name" xml:space="preserve">
-    <value></value>
+    <value>设施名称</value>
   </data>
   <data name="PageAirportFacilities_1005_name" xml:space="preserve">
-    <value></value>
+    <value>飞机</value>
   </data>
   <data name="PageAirportFacilities_1006_name" xml:space="preserve">
-    <value></value>
+    <value>航班</value>
   </data>
   <data name="PageAirportFacilities_1007_name" xml:space="preserve">
-    <value></value>
+    <value>乘客</value>
   </data>
   <data name="PageAirportFacilities_1008_name" xml:space="preserve">
-    <value></value>
+    <value>每趟航班的乘客数</value>
   </data>
   <data name="PageAirportFacilities_200_name" xml:space="preserve">
-    <value></value>
+    <value>购买设施</value>
   </data>
   <data name="PageAirportInfo_1000_name" xml:space="preserve">
-    <value></value>
+    <value>机场简介</value>
   </data>
   <data name="PageAirportInfo_1001_name" xml:space="preserve">
-    <value></value>
+    <value>IATA/ICAO代码</value>
   </data>
   <data name="PageAirportInfo_1002_name" xml:space="preserve">
-    <value></value>
+    <value>城市</value>
   </data>
   <data name="PageAirportInfo_1003_name" xml:space="preserve">
-    <value></value>
+    <value>已经开启</value>
   </data>
   <data name="PageAirportInfo_1004_name" xml:space="preserve">
-    <value></value>
+    <value>时区</value>
   </data>
   <data name="PageAirportInfo_1005_name" xml:space="preserve">
-    <value></value>
+    <value>客流量</value>
   </data>
   <data name="PageAirportInfo_1006_name" xml:space="preserve">
-    <value></value>
+    <value>货物量</value>
   </data>
   <data name="PageAirportInfo_1007_name" xml:space="preserve">
-    <value></value>
+    <value>天气预测</value>
   </data>
   <data name="PageAirportInfo_1008_name" xml:space="preserve">
-    <value></value>
+    <value>航站楼</value>
   </data>
   <data name="PageAirportInfo_1009_name" xml:space="preserve">
-    <value></value>
+    <value>名字</value>
   </data>
   <data name="PageAirportInfo_1010_name" xml:space="preserve">
-    <value></value>
+    <value>拥有者</value>
   </data>
   <data name="PageAirportInfo_1011_name" xml:space="preserve">
-    <value></value>
+    <value>登机口(空闲/总共)</value>
   </data>
   <data name="PageAirportInfo_1012_name" xml:space="preserve">
-    <value></value>
+    <value>新建航站楼</value>
   </data>
   <data name="PageAirportInfo_1013_name" xml:space="preserve">
-    <value></value>
+    <value>设置航站楼名称</value>
   </data>
   <data name="PageAirportInfo_1014_name" xml:space="preserve">
-    <value></value>
+    <value>设置登机口数量</value>
   </data>
   <data name="PageAirportInfo_1015_name" xml:space="preserve">
-    <value></value>
+    <value>航站楼费用</value>
   </data>
   <data name="PageAirportInfo_1016_name" xml:space="preserve">
-    <value></value>
+    <value>每个登机口的费用</value>
   </data>
   <data name="PageAirportInfo_1017_name" xml:space="preserve">
-    <value></value>
+    <value>跑道</value>
   </data>
   <data name="PageAirportInfo_1018_name" xml:space="preserve">
-    <value></value>
+    <value>名字</value>
   </data>
   <data name="PageAirportInfo_1019_name" xml:space="preserve">
-    <value></value>
+    <value>长度</value>
   </data>
   <data name="PageAirportInfo_1020_name" xml:space="preserve">
-    <value></value>
+    <value>材质</value>
   </data>
   <data name="PageAirportInfo_1021_name" xml:space="preserve">
-    <value></value>
+    <value>机场合约</value>
   </data>
   <data name="PageAirportInfo_1022_name" xml:space="preserve">
-    <value></value>
+    <value>航空公司</value>
   </data>
   <data name="PageAirportInfo_1023_name" xml:space="preserve">
-    <value></value>
+    <value>登机口</value>
   </data>
   <data name="PageAirportInfo_1024_name" xml:space="preserve">
-    <value></value>
+    <value>剩余月份</value>
   </data>
   <data name="PageAirportInfo_1025_name" xml:space="preserve">
-    <value></value>
+    <value>签订新合约</value>
   </data>
   <data name="PageAirportInfo_1026_name" xml:space="preserve">
-    <value></value>
+    <value>选择登机口数量</value>
   </data>
   <data name="PageAirportInfo_1027_name" xml:space="preserve">
-    <value></value>
+    <value>选择长度</value>
   </data>
   <data name="PageAirportInfo_1028_name" xml:space="preserve">
-    <value></value>
+    <value>每年的费用</value>
   </data>
   <data name="PageAirportInfo_1029_name" xml:space="preserve">
-    <value></value>
+    <value>需求</value>
   </data>
   <data name="PageAirportInfo_1030_name" xml:space="preserve">
-    <value></value>
+    <value>目的地</value>
   </data>
   <data name="PageAirportInfo_1031_name" xml:space="preserve">
-    <value></value>
+    <value>乘客</value>
   </data>
   <data name="PageAirportInfo_1032_name" xml:space="preserve">
-    <value></value>
+    <value>货物</value>
   </data>
   <data name="PageAirportInfo_200_name" xml:space="preserve">
-    <value></value>
+    <value>新建航站楼</value>
   </data>
   <data name="PageAirportInfo_201_name" xml:space="preserve">
-    <value></value>
+    <value>签订合约</value>
   </data>
   <data name="PageAirports_1004_name" xml:space="preserve">
-    <value></value>
+    <value>搜索</value>
   </data>
   <data name="PageAirportTraffic_1000_name" xml:space="preserve">
-    <value></value>
+    <value>机场航班</value>
   </data>
   <data name="PageAirportTraffic_1003_name" xml:space="preserve">
-    <value></value>
+    <value>机场交通</value>
   </data>
   <data name="PageAirportTraffic_1004_name" xml:space="preserve">
-    <value></value>
+    <value>目的地</value>
   </data>
   <data name="PageAirportTraffic_1005_name" xml:space="preserve">
-    <value></value>
+    <value>价值</value>
   </data>
   <data name="PageAirport_2000_name" xml:space="preserve">
-    <value></value>
+    <value>设施和统计</value>
   </data>
   <data name="PageAirport_2001_name" xml:space="preserve">
-    <value></value>
+    <value>航班和交通</value>
   </data>
   <data name="PageShowAirports_1006_name" xml:space="preserve">
-    <value></value>
+    <value>航空公司简介</value>
   </data>
   <data name="MessageBox_2406_message" xml:space="preserve">
-    <value></value>
+    <value>你确定你想创建这个难度？</value>
   </data>
   <data name="MessageBox_2406_name" xml:space="preserve">
-    <value></value>
+    <value>选择难度</value>
   </data>
   <data name="PageAirlineInfo_1026_name" xml:space="preserve">
-    <value></value>
+    <value>选择现金</value>
   </data>
   <data name="PageAirlineInfo_1027_name" xml:space="preserve">
-    <value></value>
+    <value>母公司</value>
   </data>
   <data name="PageCreateDifficulty_1006_name" xml:space="preserve">
-    <value></value>
+    <value>难度</value>
   </data>
   <data name="PageCreateDifficulty_1007_name" xml:space="preserve">
-    <value></value>
+    <value>简单</value>
   </data>
   <data name="PageCreateDifficulty_1008_name" xml:space="preserve">
-    <value></value>
+    <value>正常</value>
   </data>
   <data name="PageCreateDifficulty_1009_name" xml:space="preserve">
-    <value></value>
+    <value>困难</value>
   </data>
   <data name="PageCreateDifficulty_200_name" xml:space="preserve">
-    <value></value>
+    <value>选择难度</value>
   </data>
   <data name="PageShowAirports_1007_name" xml:space="preserve">
-    <value></value>
+    <value>航空公司运营</value>
   </data>
   <data name="PageShowAirports_1008_name" xml:space="preserve">
-    <value></value>
+    <value>总航线数</value>
   </data>
   <data name="AirlinerTypeSpecifications_1000_name" xml:space="preserve">
-    <value></value>
+    <value>类型</value>
   </data>
   <data name="AirlinerTypeSpecifications_1001_name" xml:space="preserve">
-    <value></value>
+    <value>厂商</value>
   </data>
   <data name="AirlinerTypeSpecifications_1002_name" xml:space="preserve">
-    <value></value>
+    <value>飞机类型</value>
   </data>
   <data name="AirlinerTypeSpecifications_1003_name" xml:space="preserve">
-    <value></value>
+    <value>机体类型</value>
   </data>
   <data name="AirlinerTypeSpecifications_1004_name" xml:space="preserve">
-    <value></value>
+    <value>引擎类型</value>
   </data>
   <data name="AirlinerTypeSpecifications_1005_name" xml:space="preserve">
-    <value></value>
+    <value>长度</value>
   </data>
   <data name="AirlinerTypeSpecifications_1006_name" xml:space="preserve">
-    <value></value>
+    <value>翼展</value>
   </data>
   <data name="AirlinerTypeSpecifications_1007_name" xml:space="preserve">
-    <value></value>
+    <value>航程</value>
   </data>
   <data name="AirlinerTypeSpecifications_1008_name" xml:space="preserve">
-    <value></value>
+    <value>巡航速度</value>
   </data>
   <data name="AirlinerTypeSpecifications_1009_name" xml:space="preserve">
-    <value></value>
+    <value>所需最短跑道长度</value>
   </data>
   <data name="AirlinerTypeSpecifications_1010_name" xml:space="preserve">
-    <value></value>
+    <value>耗油率</value>
   </data>
   <data name="AirlinerTypeSpecifications_1011_name" xml:space="preserve">
-    <value></value>
+    <value>座位数</value>
   </data>
   <data name="AirlinerTypeSpecifications_1012_name" xml:space="preserve">
-    <value></value>
+    <value>飞机最大可设置舱位数</value>
   </data>
   <data name="AirlinerTypeSpecifications_1013_name" xml:space="preserve">
-    <value></value>
+    <value>货运容量</value>
   </data>
   <data name="MessageBox_2013_message" xml:space="preserve">
-    <value></value>
+    <value>您确定要与 {0} 签订合约吗？</value>
   </data>
   <data name="MessageBox_2013_name" xml:space="preserve">
-    <value></value>
+    <value>签订制造商合约</value>
   </data>
   <data name="PageAirlineInfo_1028_name" xml:space="preserve">
-    <value></value>
+    <value>选择操作的航空公司</value>
   </data>
   <data name="PageManufacturers_1003_name" xml:space="preserve">
-    <value></value>
+    <value>合同</value>
   </data>
   <data name="PageManufacturer_1013_name" xml:space="preserve">
-    <value></value>
+    <value>签订制造商合约</value>
   </data>
   <data name="PageManufacturer_1014_name" xml:space="preserve">
-    <value></value>
+    <value>合同期限</value>
   </data>
   <data name="PageManufacturer_1015_name" xml:space="preserve">
-    <value></value>
+    <value>当前的合同</value>
   </data>
   <data name="PageManufacturer_201_name" xml:space="preserve">
-    <value></value>
+    <value>签订合约</value>
   </data>
   <data name="PageManufacturer_202_name" xml:space="preserve">
-    <value></value>
+    <value>扩展合同</value>
   </data>
   <data name="MessageBox_2227_message" xml:space="preserve">
-    <value></value>
+    <value>您确定要移除你在{0}的枢纽?</value>
   </data>
   <data name="MessageBox_2227_name" xml:space="preserve">
-    <value></value>
+    <value>移除枢纽</value>
   </data>
   <data name="PageAirlineFinances_1015_name" xml:space="preserve">
-    <value></value>
+    <value>剩余支付额</value>
   </data>
   <data name="PageAirlineInfo_1029_name" xml:space="preserve">
-    <value></value>
+    <value>航空公司资质</value>
   </data>
   <data name="PageAirportInfo_1033_name" xml:space="preserve">
-    <value></value>
+    <value>航空公司枢纽</value>
   </data>
   <data name="PageAirportInfo_202_name" xml:space="preserve">
-    <value></value>
+    <value>建立枢纽</value>
   </data>
   <data name="PageCreateRoute_202_name" xml:space="preserve">
-    <value></value>
+    <value>创建航线和开始另一个</value>
   </data>
   <data name="MessageBox_2228_message" xml:space="preserve">
-    <value></value>
+    <value>您希望与您的制造商延长{0}年合约期限吗？</value>
   </data>
   <data name="MessageBox_2228_name" xml:space="preserve">
-    <value></value>
+    <value>延长合同</value>
   </data>
   <data name="General_1001_name" xml:space="preserve">
-    <value></value>
+    <value>燃料：</value>
   </data>
   <data name="MainMenu_1009_name" xml:space="preserve">
-    <value></value>
+    <value>航班</value>
   </data>
   <data name="MainMenu_3004_name" xml:space="preserve">
-    <value></value>
+    <value>新闻和邮件</value>
   </data>
   <data name="PageAirportFacilities_1009_name" xml:space="preserve">
-    <value></value>
+    <value>价格</value>
   </data>
   <data name="PageAirportFacilities_1010_name" xml:space="preserve">
-    <value></value>
+    <value>雇员</value>
   </data>
   <data name="PageFlights_1001_name" xml:space="preserve">
-    <value></value>
+    <value>航班</value>
   </data>
   <data name="PageFlights_1002_name" xml:space="preserve">
-    <value></value>
+    <value>出发地</value>
   </data>
   <data name="PageFlights_1003_name" xml:space="preserve">
-    <value></value>
+    <value>目的地</value>
   </data>
   <data name="PageFlights_1004_name" xml:space="preserve">
-    <value></value>
+    <value>出发时间</value>
   </data>
   <data name="PageFlights_1005_name" xml:space="preserve">
-    <value></value>
+    <value>航路类型</value>
   </data>
   <data name="PageFlights_2000_name" xml:space="preserve">
-    <value></value>
+    <value>周一</value>
   </data>
   <data name="PageFlights_2001_name" xml:space="preserve">
-    <value></value>
+    <value>周二</value>
   </data>
   <data name="PageFlights_2002_name" xml:space="preserve">
-    <value></value>
+    <value>周三</value>
   </data>
   <data name="PageFlights_2003_name" xml:space="preserve">
-    <value></value>
+    <value>周四</value>
   </data>
   <data name="PageFlights_2004_name" xml:space="preserve">
-    <value></value>
+    <value>周五</value>
   </data>
   <data name="PageFlights_2005_name" xml:space="preserve">
-    <value></value>
+    <value>周六</value>
   </data>
   <data name="PageFlights_2006_name" xml:space="preserve">
-    <value></value>
+    <value>周日</value>
   </data>
   <data name="PageAirlinesStatistics_1009_name" xml:space="preserve">
     <value></value>

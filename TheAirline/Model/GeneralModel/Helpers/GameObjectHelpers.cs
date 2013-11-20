@@ -1370,6 +1370,9 @@ namespace TheAirline.Model.GeneralModel.Helpers
             if (double.IsNaN(expenses))
                 expenses = 0;
 
+            if (double.IsNaN(ticketsIncome) || ticketsIncome < 0)
+                ticketsIncome = 0;
+
             FleetAirlinerHelpers.SetFlightStats(airliner);
 
             long airportIncome = Convert.ToInt64(dest.getLandingFee());
