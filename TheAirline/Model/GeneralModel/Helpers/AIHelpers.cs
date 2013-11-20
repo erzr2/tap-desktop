@@ -181,7 +181,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             Dictionary<AirlinerType, int> list = new Dictionary<AirlinerType, int>();
             
             foreach (AirlinerType type in types)
-                list.Add(type,(int)((type.Range / (type.Price / 100000))));
+                list.Add(type,(int)((type.Range / (Convert.ToDouble(type.Price) / 100000))));
             /*
             Parallel.ForEach(types, t =>
                 {

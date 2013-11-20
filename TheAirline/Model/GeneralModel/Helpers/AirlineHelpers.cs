@@ -51,7 +51,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
         //adds an invoice to an airline
         public static void AddAirlineInvoice(Airline airline, DateTime date, Invoice.InvoiceType type, double amount)
         {
-            if (airline.IsHuman)
+            if (airline.IsHuman && GameObject.GetInstance().HumanAirline == airline)
             {
                 GameObject.GetInstance().addHumanMoney(amount);
                 GameObject.GetInstance().HumanAirline.addInvoice(new Invoice(date, type, amount),false);

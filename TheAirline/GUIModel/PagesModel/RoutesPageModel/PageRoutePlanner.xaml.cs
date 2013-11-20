@@ -171,8 +171,8 @@ namespace TheAirline.GUIModel.PagesModel.RoutesPageModel
                 if (opsType == OpsType.Whole_Day)
                     maxHours = 24;
 
-                int flightsPerDay = Convert.ToInt16(maxHours * 60 / (2 * minFlightTime.TotalMinutes));
-
+                int flightsPerDay = (int)Math.Floor((maxHours * 60) / (2 * minFlightTime.TotalMinutes));//Convert.ToInt16(maxHours * 60 / (2 * minFlightTime.TotalMinutes));
+          
                 if (intervalType == IntervalType.Week)
                     flightsPerDay = 7;
 
@@ -204,8 +204,8 @@ namespace TheAirline.GUIModel.PagesModel.RoutesPageModel
                 if (opsType == OpsType.Whole_Day)
                     maxHours = 24;
 
-                int flightsPerDay = Convert.ToInt16(maxHours * 60 / (2 * minFlightTime.TotalMinutes));
-
+                int flightsPerDay = (int)Math.Floor((maxHours * 60) / (2 * minFlightTime.TotalMinutes));//Convert.ToInt16(maxHours * 60 / (2 * minFlightTime.TotalMinutes));
+                
                 if (intervalType == IntervalType.Week)
                     flightsPerDay = 6;
 
@@ -240,8 +240,8 @@ namespace TheAirline.GUIModel.PagesModel.RoutesPageModel
                 if (opsType == OpsType.Whole_Day)
                     maxHours = 24;
 
-                int flightsPerDay = Convert.ToInt16(maxHours * 60 / (2 * minFlightTime.TotalMinutes));
-
+                int flightsPerDay = (int)Math.Floor((maxHours * 60) / (2 * minFlightTime.TotalMinutes));//Convert.ToInt16(maxHours * 60 / (2 * minFlightTime.TotalMinutes));
+          
                 if (intervalType == IntervalType.Week)
                     flightsPerDay = 7;
 
