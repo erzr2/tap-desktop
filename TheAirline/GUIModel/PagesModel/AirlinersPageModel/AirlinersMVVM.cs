@@ -78,44 +78,7 @@ namespace TheAirline.GUIModel.PagesModel.AirlinersPageModel
             this.TotalAmount = price - this.Discount;
 
         }
-        //returns the delivery date for the order
-        public DateTime getDeliveryDate()
-        {
-            double monthsToComplete = 0;
-
-            foreach (AirlinerOrderMVVM order in this.Orders)
-            {
-                double orderToComplete = Math.Ceiling(Convert.ToDouble(order.Amount) / order.Type.ProductionRate);
-
-                if (orderToComplete > monthsToComplete)
-                    monthsToComplete = orderToComplete;
-            }
-
-            DateTime latestDate = new DateTime(1900, 1, 1);
-
-            foreach (AirlinerOrderMVVM order in this.Orders)
-            {
-                DateTime date = new DateTime(GameObject.GetInstance().GameTime.Year, GameObject.GetInstance().GameTime.Month, GameObject.GetInstance().GameTime.Day);
-                int rate = order.Type.ProductionRate;
-                if (order.Amount <= (rate / 4))
-                {
-                    date = date.AddMonths(3);
-                }
-                else
-                {
-                    for (int i = (rate / 4) + 1; i <= order.Amount; i++)
-                    {
-                        double iRate = 365 / rate;
-                        date = date.AddDays(Math.Round(iRate, 0, MidpointRounding.AwayFromZero));
-                    }
-                }
-
-                if (date > latestDate)
-                    latestDate = date;
-            }
-
-            return latestDate;
-        }
+       
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {
