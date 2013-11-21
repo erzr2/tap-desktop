@@ -379,10 +379,12 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
     {
         public int GateNumber { get; set; }
         public Airline Airline { get; set; }
+        public Boolean IsFree { get; set; }
         public AirportGateMVVM(int gatenumber, Airline airline)
         {
             this.Airline = airline;
             this.GateNumber = gatenumber;
+            this.IsFree = this.Airline == null;
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
@@ -435,6 +437,7 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
         public DeliveryType Type { get; set; }
 
         public Terminal Terminal { get; set; }
+        public ObservableCollection<AirportGateMVVM> AllGates { get; set; }
         public AirportTerminalMVVM(Terminal terminal, Boolean isBuyable, Boolean isSellable)
         {
             this.Terminal = terminal;
@@ -448,6 +451,17 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
             this.IsSellable = isSellable;
 
             this.Type = GameObject.GetInstance().GameTime < this.DeliveryDate ? DeliveryType.Building : DeliveryType.Delivered;
+
+            this.AllGates = new ObservableCollection<AirportGateMVVM>();
+
+             int gatenumber = 1;
+            
+            foreach (Gate gate in this.Terminal.Gates.getGates())
+            {
+                this.AllGates.Add(new AirportGateMVVM(gatenumber,gate.Airline));
+
+                gatenumber++;
+            }
 
      
         }

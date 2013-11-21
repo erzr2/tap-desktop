@@ -22,20 +22,9 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
     public partial class PageAirportGateSchedule : Page
     {
         public AirportMVVM Airport { get; set; }
-        public List<AirportGateMVVM> Gates { get; set; }
         public PageAirportGateSchedule(AirportMVVM airport)
         {
             this.Airport = airport;
-
-            this.Gates = new List<AirportGateMVVM>();
-
-            int gatenumber = 1;
-            foreach (Gate gate in this.Airport.Airport.Terminals.getGates().Where(g=>g.Airline != null))
-            {
-                this.Gates.Add(new AirportGateMVVM(gatenumber,gate.Airline));
-
-                gatenumber++;
-            }
 
             this.DataContext = this.Airport;
 

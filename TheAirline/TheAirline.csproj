@@ -573,8 +573,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUIModel\MasterPageModel\standardTemplates.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="GUIModel\PagesModel\AirlinePageModel\PageAirlineInsurance.xaml">
       <SubType>Designer</SubType>
