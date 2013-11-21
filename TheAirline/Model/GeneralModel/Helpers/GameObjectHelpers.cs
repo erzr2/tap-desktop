@@ -44,7 +44,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
                 GameObject.GetInstance().GameTime = GameObject.GetInstance().GameTime.AddDays(1);
 
                 DoDailyUpdate();
-              
+
                 if (MathHelpers.IsNewMonth(GameObject.GetInstance().GameTime)) DoMonthlyUpdate();
 
                 if (MathHelpers.IsNewYear(GameObject.GetInstance().GameTime)) DoYearlyUpdate();
@@ -71,7 +71,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
                 GameObject.GetInstance().GameTime = GameObject.GetInstance().GameTime.AddMinutes(Settings.GetInstance().MinutesPerTurn);
 
                 CalibrateTime();
-                
+
                 if (MathHelpers.IsNewDay(GameObject.GetInstance().GameTime)) DoDailyUpdate();
 
                 if (MathHelpers.IsNewYear(GameObject.GetInstance().GameTime)) DoYearlyUpdate();
@@ -86,10 +86,10 @@ namespace TheAirline.Model.GeneralModel.Helpers
                         }
                     }
 
-                 Parallel.ForEach(airline.Fleet, airliner =>
-                     {
-                     UpdateAirliner(airliner);
-                     });
+                    Parallel.ForEach(airline.Fleet, airliner =>
+                        {
+                            UpdateAirliner(airliner);
+                        });
 
                 });
                 if (MathHelpers.IsNewMonth(GameObject.GetInstance().GameTime)) DoMonthlyUpdate();
@@ -313,10 +313,21 @@ namespace TheAirline.Model.GeneralModel.Helpers
                                    AirportContract newContract = new AirportContract(terminal.Airline, airport, GameObject.GetInstance().GameTime, gatesDiff, length, AirportHelpers.GetYearlyContractPayment(airport, gatesDiff, length) / 2);
 
                                    airport.addAirlineContract(newContract);
+
                                }
 
                                foreach (AirportContract oldContract in oldContracts)
+                               {
                                    airport.removeAirlineContract(oldContract);
+
+                                   for (int i=0;i<oldContract.NumberOfGates;i++)
+                                   {
+                                        Gate oldGate = airport.Terminals.getGates().Where(g => g.Airline == terminal.Airline).First();
+                                        oldGate.Airline = null;
+                                   }
+                               }
+
+                               
 
                            }
                            double yearlyPayment = AirportHelpers.GetYearlyContractPayment(airport, terminal.Gates.NumberOfGates, 20);
@@ -355,6 +366,12 @@ namespace TheAirline.Model.GeneralModel.Helpers
                            {
                                terminalContract.NumberOfGates += numberOfNewGates;
                                terminalContract.YearlyPayment = yearlyPayment;
+
+                               for (int i=0;i<numberOfNewGates;i++)
+                               {
+                                        Gate newGate = airport.Terminals.getGates().Where(g => g.Airline == null).First();
+                                        newGate.Airline = terminalContract.Airline;
+                               }
                            }
                        }
 
@@ -365,6 +382,13 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
                    foreach (AirportContract contract in airlineContracts)
                    {
+                        for (int i = 0; i < contract.NumberOfGates; i++)
+                        {
+                           Gate gate = airport.Terminals.getGates().Where(g => g.Airline == contract.Airline).First();
+                           gate.Airline = null;
+                        
+                        }
+
                        if (contract.Airline.IsHuman)
                        {
                            int totalContractGates = airport.AirlineContracts.Where(c => c.Airline.IsHuman).Sum(c => c.NumberOfGates);
@@ -631,7 +655,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             //Clear stats when it on monthly
             if (Settings.GetInstance().ClearStats == Settings.Intervals.Monthly)
                 ClearAllUsedStats();
-                
+
             //Auto save when it on monthly
             if (Settings.GetInstance().AutoSave == Settings.Intervals.Monthly)
                 SerializedLoadSaveHelpers.SaveGame("autosave");
@@ -649,13 +673,14 @@ namespace TheAirline.Model.GeneralModel.Helpers
             if (lower <= 0) { lower = 1; }
             int airliners = rnd.Next(lower, upper);
 
-            for (int i = 0; i < airliners; i++) { 
-                Airliners.AddAirliner(AirlinerHelpers.CreateAirlinerFromYear(GameObject.GetInstance().GameTime.Year - rnd.Next(1,10)));
+            for (int i = 0; i < airliners; i++)
+            {
+                Airliners.AddAirliner(AirlinerHelpers.CreateAirlinerFromYear(GameObject.GetInstance().GameTime.Year - rnd.Next(1, 10)));
             }
 
             foreach (Airliner airliner in oldAirliners)
                 Airliners.RemoveAirliner(airliner);
-            
+
             //checks for new airports which are opening
             List<Airport> openedAirports = Airports.GetAllAirports(a => a.Profile.Period.From.ToShortDateString() == GameObject.GetInstance().GameTime.ToShortDateString());
             List<Airport> closedAirports = Airports.GetAllAirports(a => a.Profile.Period.To.ToShortDateString() == GameObject.GetInstance().GameTime.ToShortDateString());
@@ -935,10 +960,10 @@ namespace TheAirline.Model.GeneralModel.Helpers
                     }
                     //passenger growth if ticket office
                     //checking if someone in the alliance has a ticket office for the route (if in an alliance).
-                    if (airline.Alliances.Count>0)
+                    if (airline.Alliances.Count > 0)
                     {
                         int highest = airline.Alliances.SelectMany(a => a.Members).Select(m => m.Airline).Max(m => airport.getAirlineAirportFacility(m, AirportFacility.FacilityType.TicketOffice).Facility.ServiceLevel);
-                        Boolean hasTicketOffice = airline.Alliances.Where(a=>a.Type == Alliance.AllianceType.Full).SelectMany(a => a.Members).Select(m => m.Airline).Where(m => airport.getAirlineAirportFacility(m, AirportFacility.FacilityType.TicketOffice).Facility.TypeLevel > 0) != null;
+                        Boolean hasTicketOffice = airline.Alliances.Where(a => a.Type == Alliance.AllianceType.Full).SelectMany(a => a.Members).Select(m => m.Airline).Where(m => airport.getAirlineAirportFacility(m, AirportFacility.FacilityType.TicketOffice).Facility.TypeLevel > 0) != null;
 
                         //If there is an service level update the routes
                         if (hasTicketOffice)
@@ -1114,7 +1139,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
                 if (adistance > 4)
                     MathHelpers.MoveObject(airliner, speed);
-                
+
                 double distance = MathHelpers.GetDistance(airliner.CurrentPosition.Profile.Coordinates, airliner.CurrentFlight.Entry.Destination.Airport.Profile.Coordinates);
 
                 if (airliner.CurrentFlight.DistanceToDestination < 5)
@@ -1170,7 +1195,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
                 if (adistance > 4)
                     MathHelpers.MoveObject(airliner, speed);
-                
+
                 if (airliner.CurrentFlight.DistanceToDestination < 5)
                 {
                     airliner.Status = FleetAirliner.AirlinerStatus.Resting;
@@ -1262,7 +1287,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
                         if (airliner.CurrentFlight.isPassengerFlight())
                         {
                             var classes = new List<AirlinerClass>(airliner.Airliner.Classes);
-                      
+
                             foreach (AirlinerClass aClass in classes)
                             {
                                 airliner.CurrentFlight.Classes.Add(new FlightAirlinerClass(((PassengerRoute)airliner.CurrentFlight.Entry.TimeTable.Route).getRouteAirlinerClass(aClass.Type), GetPassengers(airliner, aClass.Type)));
@@ -1303,7 +1328,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
                 foreach (FlightAirlinerClass fac in airliner.CurrentFlight.Classes)
                 {
-                   
+
                     ticketsIncome += fac.Passengers * ((PassengerRoute)airliner.CurrentFlight.Entry.TimeTable.Route).getRouteAirlinerClass(fac.AirlinerClass.Type).FarePrice;
                 }
 
@@ -1726,11 +1751,11 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
         private static void ClearAllUsedStats()
         {
-           Airports.GetAllAirports().ForEach(a => a.clearDestinationPassengerStatistics());
-           Airports.GetAllAirports().ForEach(a => a.clearDestinationCargoStatistics());
-           AirlineHelpers.ClearRoutesStatistics();
-           AirlineHelpers.ClearAirlinesStatistics();
-           AirportHelpers.ClearAirportStatistics();
+            Airports.GetAllAirports().ForEach(a => a.clearDestinationPassengerStatistics());
+            Airports.GetAllAirports().ForEach(a => a.clearDestinationCargoStatistics());
+            AirlineHelpers.ClearRoutesStatistics();
+            AirlineHelpers.ClearAirlinesStatistics();
+            AirportHelpers.ClearAirportStatistics();
         }
 
     }

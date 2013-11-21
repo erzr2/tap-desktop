@@ -326,7 +326,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
                      foreach (XmlElement airportGateNode in airportGatesList)
                      {
                          DateTime gateDeliveryDate = DateTime.Parse(airportGateNode.Attributes["delivery"].Value, new CultureInfo("de-DE", false));
-                         Gate gate = new Gate(gateDeliveryDate);
+                         Gate gate = new Gate(gateDeliveryDate,null);
 
                          terminal.Gates.addGate(gate);
                      }

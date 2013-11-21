@@ -608,6 +608,7 @@ namespace TheAirline.Model.GeneralModel
                 CargoFactors.Add(GeneralHelpers.Size.Very_small, 0.23);
                 CargoFactors.Add(GeneralHelpers.Size.Smallest, 0.23);
             }
+           
             var airports = Airports.GetAllAirports(a => a.Statics.getDestinationPassengersSum() == 0);
             int count = airports.Count;
 

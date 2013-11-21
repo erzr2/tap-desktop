@@ -15,14 +15,14 @@ namespace TheAirline.Model.AirportModel
  
     public class Gate
     {
-       // public Airline Airline { get; set; }
         //public Boolean HasRoute { get; set; }
         //public const int RoutesPerGate = 5;
-        
+        public Airline Airline { get; set; }
         public DateTime DeliveryDate { get; set; }
-        public Gate(DateTime deliveryDate)
+        public Gate(DateTime deliveryDate, Airline airline)
         {
              this.DeliveryDate = deliveryDate;
+             this.Airline = airline;
         }
 
     }
@@ -37,11 +37,11 @@ namespace TheAirline.Model.AirportModel
         public int NumberOfGates { get { return this.TerminalGates.Count; } set { ;} }
         public int NumberOfOrderedGates { get { return this.getOrderedGates().Count;} set { ;} }
         public int NumberOfDeliveredGates { get { return this.NumberOfGates - this.NumberOfOrderedGates; } set { ;} }
-        public Gates(int numberOfGates, DateTime deliveryDate)
+        public Gates(int numberOfGates, DateTime deliveryDate, Airline airline)
         {
             this.TerminalGates = new List<Gate>();
             for (int i = 0; i < numberOfGates; i++)
-                this.TerminalGates.Add(new Gate(deliveryDate));
+                this.TerminalGates.Add(new Gate(deliveryDate,airline));
         }
         //returns all delivered gats
         public List<Gate> getDeliveredGates()

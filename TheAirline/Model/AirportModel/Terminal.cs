@@ -37,7 +37,7 @@ namespace TheAirline.Model.AirportModel
             this.Name = name;
             this.DeliveryDate = new DateTime(deliveryDate.Year, deliveryDate.Month, deliveryDate.Day);
         
-            this.Gates = new Gates(gates, this.DeliveryDate);
+            this.Gates = new Gates(gates, this.DeliveryDate,airline);
         }
         // chs 11-10-11: changed for the possibility of purchasing an existing terminal
         //returns if the terminal is buyalbe
@@ -64,7 +64,7 @@ namespace TheAirline.Model.AirportModel
             DateTime deliveryDate = GameObject.GetInstance().GameTime.AddDays(gates * 10);
             for (int i = 0; i < gates; i++)
             {
-                Gate gate = new Gate( deliveryDate);
+                Gate gate = new Gate(deliveryDate,this.Airline);
                 this.Gates.addGate(gate);
             }
         }
@@ -238,10 +238,16 @@ namespace TheAirline.Model.AirportModel
         public void switchAirline(Airline airlineFrom, Airline airlineTo)
         {
             List<AirportContract> contracts = this.Airport.getAirlineContracts(airlineFrom);
-
+            
             foreach (AirportContract contractFrom in contracts)
             {
                 contractFrom.Airline = airlineTo;
+
+                for (int i = 0; i < contractFrom.NumberOfGates; i++)
+                {
+                    Gate gate = contractFrom.Airport.Terminals.getGates().Where(g => g.Airline == airlineFrom).First();
+                    gate.Airline = airlineTo;
+                }
             }
           
             airlineFrom.removeAirport(this.Airport);

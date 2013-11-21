@@ -30,9 +30,9 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
             this.Gates = new List<AirportGateMVVM>();
 
             int gatenumber = 1;
-            foreach (Gate gate in this.Airport.Airport.Terminals.getGates())
+            foreach (Gate gate in this.Airport.Airport.Terminals.getGates().Where(g=>g.Airline != null))
             {
-               this.Gates.Add(new AirportGateMVVM(gatenumber,null));
+                this.Gates.Add(new AirportGateMVVM(gatenumber,gate.Airline));
 
                 gatenumber++;
             }

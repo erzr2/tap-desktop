@@ -154,6 +154,15 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
                 newAirport.addAirlineContract(oldContract);
 
+                for (int i = 0; i < oldContract.NumberOfGates; i++)
+                {
+                    Gate newGate = newAirport.Terminals.getGates().Where(g => g.Airline == null).First();
+                    newGate.Airline = airline;
+
+                    Gate oldGate =oldAirport.Terminals.getGates().Where(g => g.Airline == airline).First();
+                    oldGate.Airline = null;
+                }
+
 
             }
             //routes
