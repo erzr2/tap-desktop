@@ -640,6 +640,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUIModel\PagesModel\AirportPageModel\PageAirportGateSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUIModel\PagesModel\AirportPageModel\PageAirportInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1234,6 +1238,9 @@
     </Compile>
     <Compile Include="GUIModel\PagesModel\AirportPageModel\PageAirportFacilities.xaml.cs">
       <DependentUpon>PageAirportFacilities.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUIModel\PagesModel\AirportPageModel\PageAirportGateSchedule.xaml.cs">
+      <DependentUpon>PageAirportGateSchedule.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUIModel\PagesModel\AirportPageModel\PageAirportInfo.xaml.cs">
       <DependentUpon>PageAirportInfo.xaml</DependentUpon>

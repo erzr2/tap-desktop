@@ -374,6 +374,17 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
             }
         }
     }
+    //the mvvm class for an airport gate
+    public class AirportGateMVVM : INotifyPropertyChanged
+    {
+        public int GateNumber { get; set; }
+        public Airline Airline { get; set; }
+        public AirportGateMVVM(int gatenumber, Airline airline)
+        {
+            this.Airline = airline;
+            this.GateNumber = gatenumber;
+        }
+    }
     //the mvvm class for an airport terminal
     public class AirportTerminalMVVM : INotifyPropertyChanged
     {
