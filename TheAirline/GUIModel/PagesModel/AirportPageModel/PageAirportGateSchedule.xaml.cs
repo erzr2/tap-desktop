@@ -29,10 +29,15 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
 
             this.Gates = new List<AirportGateMVVM>();
 
-            //foreach (Gate gate in this.Airport.Airport.Terminals.getGates())
-              //  this.Gates.Add(new AirportGateMVVM(
+            int gatenumber = 1;
+            foreach (Gate gate in this.Airport.Airport.Terminals.getGates())
+            {
+                //this.Gates.Add(new AirportGateMVVM(gatenumber,gate.Airline));
 
-            this.DataContext = this.Gates;
+                gatenumber++;
+            }
+
+            this.DataContext = this.Airport;
 
             InitializeComponent();
         }

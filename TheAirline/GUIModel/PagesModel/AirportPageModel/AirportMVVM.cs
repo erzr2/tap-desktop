@@ -384,6 +384,16 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
             this.Airline = airline;
             this.GateNumber = gatenumber;
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (null != handler)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
     }
     //the mvvm class for an airport terminal
     public class AirportTerminalMVVM : INotifyPropertyChanged
