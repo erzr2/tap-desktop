@@ -32,7 +32,7 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
             int gatenumber = 1;
             foreach (Gate gate in this.Airport.Airport.Terminals.getGates())
             {
-                //this.Gates.Add(new AirportGateMVVM(gatenumber,gate.Airline));
+               this.Gates.Add(new AirportGateMVVM(gatenumber,null));
 
                 gatenumber++;
             }
