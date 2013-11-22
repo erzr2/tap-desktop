@@ -362,6 +362,7 @@ namespace TheAirline.GUIModel.PagesModel.AirportPageModel
         public void extendContract(int years)
         {
             this.Contract.Length += years;
+            this.Contract.ExpireDate = this.Contract.ExpireDate.AddYears(years);
             this.MonthsLeft = this.Contract.MonthsLeft;
         }
         public event PropertyChangedEventHandler PropertyChanged;

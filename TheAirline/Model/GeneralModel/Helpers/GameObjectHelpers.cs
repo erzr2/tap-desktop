@@ -1306,7 +1306,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
         public static void SimulateLanding(FleetAirliner airliner)
         {
             DateTime landingTime = airliner.CurrentFlight.FlightTime.Add(MathHelpers.GetFlightTime(airliner.CurrentFlight.Entry.DepartureAirport.Profile.Coordinates, airliner.CurrentFlight.Entry.Destination.Airport.Profile.Coordinates, airliner.Airliner.Type));
-            double fdistance = MathHelpers.GetDistance(airliner.CurrentFlight.getDepartureAirport(), airliner.CurrentPosition);
+            double fdistance = MathHelpers.GetDistance(airliner.CurrentFlight.getDepartureAirport(), airliner.CurrentFlight.Entry.Destination.Airport);
 
             TimeSpan flighttime = landingTime.Subtract(airliner.CurrentFlight.FlightTime);
             double groundTaxPerPassenger = 5;
@@ -1315,7 +1315,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
             if (airliner.CurrentFlight.Entry.Destination.Airport.Profile.Country.Name != airliner.CurrentFlight.getDepartureAirport().Profile.Country.Name)
                 tax = 2 * tax;
-
+            
             double ticketsIncome = 0;
             double feesIncome = 0;
             double mealExpenses = 0;
