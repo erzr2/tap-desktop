@@ -30,6 +30,10 @@ namespace TheAirline.Model.AirportModel
         public Gates Gates { get; set; }
         public Boolean IsBuilt { get{return isBuilt();} set{;} }
         public Boolean IsBuyable { get { return isBuyable(); } set { ;} }
+        public Terminal(Airport airport, string name, int gates, DateTime deliveryDate)
+            : this(airport, null, name, gates, deliveryDate)
+        {
+        }
         public Terminal(Airport airport, Airline airline,string name, int gates, DateTime deliveryDate)
         {
             this.Airport = airport;
@@ -158,7 +162,17 @@ namespace TheAirline.Model.AirportModel
 
             return gates;
         }
-        
+        public List<Gate> getGates(Airline airline)
+        {
+            List<Gate> gates = new List<Gate>();
+
+            foreach (Terminal terminal in getDeliveredTerminals())
+                foreach (Gate gate in terminal.Gates.getGates().Where(a=>a.Airline != null && a.Airline == airline))
+                    gates.Add(gate);
+
+
+            return gates;
+        }
         //adds a terminal to the list
         public void addTerminal(Terminal terminal)
         {

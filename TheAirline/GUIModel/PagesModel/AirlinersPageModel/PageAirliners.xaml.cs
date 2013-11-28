@@ -39,7 +39,9 @@ namespace TheAirline.GUIModel.PagesModel.AirlinersPageModel
                         })
                   .OrderByDescending(g=>g.Fleet.Count());
 
-            foreach (var group in query)
+            var aircrafts = query.Take(Math.Min(query.Count(),5));
+
+            foreach (var group in aircrafts)
             {
                 this.MostUsedAircrafts.Add(new AirlineFleetSizeMVVM(group.Type,group.Fleet.Count()));
             }

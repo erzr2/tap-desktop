@@ -1097,7 +1097,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
                         else
                         {
 
-                            airliner.CurrentFlight = new Flight(new RouteTimeTableEntry(route.TimeTable, GameObject.GetInstance().GameTime.DayOfWeek, GameObject.GetInstance().GameTime.TimeOfDay, new RouteEntryDestination(airliner.Homebase, "Service")));
+                            airliner.CurrentFlight = new Flight(new RouteTimeTableEntry(route.TimeTable, GameObject.GetInstance().GameTime.DayOfWeek, GameObject.GetInstance().GameTime.TimeOfDay, new RouteEntryDestination(airliner.Homebase, "Service",null),null));
 
                             airliner.Status = FleetAirliner.AirlinerStatus.On_service;
                         }
@@ -2197,7 +2197,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
                 TimeSpan time = TimeSpan.Parse(entryNode.Attributes["time"].Value);
                 FleetAirliner airliner = entryNode.Attributes["airliner"].Value == "-" ? null : airline.Fleet.Find(a => a.Airliner.ID == entryNode.Attributes["airliner"].Value); ;
 
-                RouteTimeTableEntry entry = new RouteTimeTableEntry(timeTable, day, time, new RouteEntryDestination(entryDest, flightCode));
+                RouteTimeTableEntry entry = new RouteTimeTableEntry(timeTable, day, time, new RouteEntryDestination(entryDest, flightCode,null),null);
 
                 if (entryNode.HasAttribute("id"))
                     entry.ID = entryNode.Attributes["id"].Value;

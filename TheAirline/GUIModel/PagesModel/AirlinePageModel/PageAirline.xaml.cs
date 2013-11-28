@@ -61,7 +61,7 @@ namespace TheAirline.GUIModel.PagesModel.AirlinePageModel
                 this.MostUsedAircrafts.Add(new AirlineFleetSizeMVVM(type, count));
             }
 
-            this.MostUsedAircrafts = this.MostUsedAircrafts.OrderByDescending(a => a.Count).ToList();
+            this.MostUsedAircrafts = this.MostUsedAircrafts.OrderByDescending(a => a.Count).Take(Math.Min(5,this.MostUsedAircrafts.Count)).ToList();
          
             this.Loaded += PageAirline_Loaded;
 

@@ -1221,7 +1221,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             if (!airliner.CurrentFlight.Entry.Destination.Airport.Profile.Coordinates.Equals(airliner.Homebase.Profile.Coordinates))
                 airliner.Status = FleetAirliner.AirlinerStatus.Stopped;
             else
-                airliner.CurrentFlight = new Flight(new RouteTimeTableEntry(airliner.CurrentFlight.Entry.TimeTable, GameObject.GetInstance().GameTime.DayOfWeek, GameObject.GetInstance().GameTime.TimeOfDay, new RouteEntryDestination(airliner.Homebase, "Service")));
+                airliner.CurrentFlight = new Flight(new RouteTimeTableEntry(airliner.CurrentFlight.Entry.TimeTable, GameObject.GetInstance().GameTime.DayOfWeek, GameObject.GetInstance().GameTime.TimeOfDay, new RouteEntryDestination(airliner.Homebase, "Service",null)));
 
         }
 
@@ -1501,7 +1501,7 @@ namespace TheAirline.Model.GeneralModel.Helpers
             if (sinceLastService > serviceCheck)
             {
                 airliner.Status = FleetAirliner.AirlinerStatus.On_service;
-                airliner.CurrentFlight.Entry.Destination = new RouteEntryDestination(airliner.Homebase, "Service");
+                airliner.CurrentFlight.Entry.Destination = new RouteEntryDestination(airliner.Homebase, "Service",null);
 
             }
 

@@ -4503,4 +4503,10 @@ Good luck.</value>
   <data name="PageAirport_2002_name" xml:space="preserve">
     <value>Gate Schedule</value>
   </data>
+  <data name="PageAirlineEmployees_1011_name" xml:space="preserve">
+    <value>Unassigned Pilots</value>
+  </data>
+  <data name="PageAirlineEmployees_1012_name" xml:space="preserve">
+    <value>Pilots due to Retire</value>
+  </data>
 </root>

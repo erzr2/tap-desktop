@@ -1109,7 +1109,8 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
                     for (int i = 0; i < 3; i++)
                     {
-                        timeTable.addEntry(new RouteTimeTableEntry(timeTable, day, new TimeSpan(12, 0, 0).Add(new TimeSpan(0, outTime, 0)), new RouteEntryDestination(route.Destination2, flightCode1)));
+                        Gate outboundGate = GetFreeAirlineGate(airliner.Airliner.Airline,route.Destination1,day, new TimeSpan(12, 0, 0).Add(new TimeSpan(0, outTime, 0)));
+                        timeTable.addEntry(new RouteTimeTableEntry(timeTable, day, new TimeSpan(12, 0, 0).Add(new TimeSpan(0, outTime, 0)), new RouteEntryDestination(route.Destination2, flightCode1),outboundGate));
 
                         day += 2;
                     }
@@ -1118,7 +1119,9 @@ namespace TheAirline.Model.GeneralModel.Helpers
 
                     for (int i = 0; i < 3; i++)
                     {
-                        timeTable.addEntry(new RouteTimeTableEntry(timeTable, day, new TimeSpan(12, 0, 0).Add(new TimeSpan(0, homeTime, 0)), new RouteEntryDestination(route.Destination1, flightCode2)));
+                        Gate outboundGate = GetFreeAirlineGate(airliner.Airliner.Airline,route.Destination2, day, new TimeSpan(12, 0, 0).Add(new TimeSpan(0, homeTime, 0)));
+              
+                        timeTable.addEntry(new RouteTimeTableEntry(timeTable, day, new TimeSpan(12, 0, 0).Add(new TimeSpan(0, homeTime, 0)), new RouteEntryDestination(route.Destination1, flightCode2),outboundGate));
 
                         day += 2;
                     }
@@ -1225,7 +1228,14 @@ namespace TheAirline.Model.GeneralModel.Helpers
             return timeTable;
 
         }
+        //returns a free gate for an airline
+        private static Gate GetFreeAirlineGate(Airline airline, Airport airport, DayOfWeek day, TimeSpan time)
+        {
+            var airlineGates = airport.Terminals.getGates(airline);
 
+            return airlineGates.FirstOrDefault();
+
+        }
         //check if an airline can join an alliance
         public static Boolean CanJoinAlliance(Airline airline, Alliance alliance)
         {
